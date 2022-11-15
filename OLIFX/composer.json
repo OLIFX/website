@@ -1,0 +1,21 @@
+{
+    "name": "otavio/olifx",
+    "authors": [
+        {
+            "name": "Otávio João Maldaner",
+            "email": "otavio.maldaner@aluno.feliz.ifrs.edu.br"
+        }, {
+            "name": "Luís Felipe Assmann",
+            "email": "luis.assmann@aluno.feliz.ifrs.edu.br"
+        }, {
+            "name": "Matheus Perch",
+            "email": "matheus.persch@aluno.feliz.ifrs.edu.br"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
