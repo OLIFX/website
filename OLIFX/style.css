@@ -1,0 +1,27 @@
+@import './settings/theme.css';
+@import './settings/global.css';
+:root {
+    --bg-color-1: #153843;
+    --bg-color-2: #141923;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+.homepage-container {
+    background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+    width: 100%;
+    height: 100%;
+}
+.hp-title {
+    font-family: var(--main-font);
+    color: var(--seconadry-text-color);
+}
+.hp-title h1 {
+    font-size: var(--font-g);
+}
+@media (min-width: var(--screen-mobileL)) {
+    .hp-title h1{
+        font-size: var(--font-gg);
+    }
+}

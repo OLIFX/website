@@ -8,9 +8,14 @@ require_once __DIR__.'/settings/config.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/olifx_logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
     <title>OLIFX</title>
 </head>
 <body>
-    
+    <div class="homepage-container">
+        <div class="hp-title">
+            <h1>Easy Selling Products Platform</h1>
+        </div>
+    </div>
 </body>
 </html>
