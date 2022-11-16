@@ -10,15 +10,67 @@ body, html {
 }
 .homepage-container {
     background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
-    width: 100%;
+}
+.homepage-util-area {
+    min-width: var(--screen-mobileS);
     height: 100%;
+    width: 100%;
+}
+.hp-superior-part {
+    width: 80%;
+    margin: auto;
+    padding: 70px 20px 0 0;
+    color: var(--seconadry-text-color);
+    font-family: var(--main-font);
 }
 .hp-title {
-    font-family: var(--main-font);
-    color: var(--seconadry-text-color);
 }
 .hp-title h1 {
     font-size: var(--font-g);
+    font-weight: 500;
+}
+.hp-subtitle h3 {
+    font-size: var(--font-p);
+    font-weight: 500;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+.hp-mid-part {
+    width: 100%;
+    opacity: 0.2;
+}
+.hp-main-image {
+    filter: invert(100%);
+    margin: 0;
+    padding: 0;
+}
+.hp-bottom-part {
+    height: 50px;
+}
+.hp-button-space {
+    margin: 20px auto;
+}
+.hp-button {
+    background-color: var(--primary-color);
+    /* margin: 20px auto; */
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease .2s;
+}
+.hp-button:hover {
+    transform: scale(1.1);
+}
+.hp-button p {
+    margin: 0;
+    padding: 0;
+    color: var(--seconadry-text-color);
+    font-family: var(--main-font);
+    font-weight: 500;
+    padding: 5px 0;
 }
 @media (min-width: var(--screen-mobileL)) {
     .hp-title h1{
