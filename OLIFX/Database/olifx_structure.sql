@@ -32,7 +32,7 @@ USE `olifx`;
 CREATE TABLE `favorite` (
   `idUser` int(11) NOT NULL,
   `idProduct` int(11) NOT NULL,
-  `date` date DEFAULT current_timestamp()
+  `date_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `product` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` decimal(18,2) NOT NULL,
-  `date` date DEFAULT current_timestamp()
+  `date_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
