@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__.'/settings/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,6 @@
     <title>OLIFX</title>
 </head>
 <body>
-    Bem-vindo à OLIFX
+    
 </body>
 </html>
