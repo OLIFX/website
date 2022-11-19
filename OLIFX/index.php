@@ -27,9 +27,9 @@ require_once __DIR__.'/settings/config.php';
             </div>
             <div class="hp-bottom-part">
                 <div class="hp-button-space">
-                    <a href="#">
+                    <a href="page/login">
                         <div class="hp-button">
-                            <p>Start Buying</p>
+                            <p>Enter the app</p>
                         </div>
                     </a>
                 </div>
