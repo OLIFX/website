@@ -27,9 +27,11 @@ require_once __DIR__.'/settings/config.php';
             </div>
             <div class="hp-bottom-part">
                 <div class="hp-button-space">
-                    <div class="hp-button">
-                        <p>Start Buying</p>
-                    </div>
+                    <a href="#">
+                        <div class="hp-button">
+                            <p>Start Buying</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
