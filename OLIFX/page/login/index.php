@@ -23,7 +23,6 @@
             <input type="password" name="password" id="password" required>
 
             <a class="link-centered-orange" href="../new">Don't have an account yet? Sign Up</a>
-
             <input type="submit" value="Login" name="button">
         </form>
     </section>

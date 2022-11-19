@@ -1,0 +1,34 @@
+@import '../../settings/theme.css';
+@import '../../settings/global.css';
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --bg-color-1: #153843;
+    --bg-color-2: #141923;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+.landing-container {
+    height: 100%;
+    width: 100%;
+}
+.landing-superior-part {
+    font-family: 'Poppins';
+    height: 40vh;
+    background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+    /* color: var(--secondary-text-color); */
+}
+.sidebar-area{
+    height: 40px;
+    width: 40px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+}
