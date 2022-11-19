@@ -1,0 +1,97 @@
+@import './settings/theme.css';
+@import './settings/global.css';
+:root {
+    --bg-color-1: #153843;
+    --bg-color-2: #141923;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+.homepage-container {
+    background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+    height: 100%;
+    width: 100%;
+}
+.homepage-util-area {
+    min-width: var(--screen-mobileS);
+    height: 100%;
+    width: 100%;
+    max-width: var(--screen-laptop);
+}
+.hp-superior-part {
+    width: 80%;
+    margin: auto;
+    padding: 70px 20px 0 0;
+    color: var(--seconadry-text-color);
+    font-family: var(--main-font);
+}
+.hp-title {
+}
+.hp-title h1 {
+    font-size: var(--font-g);
+    font-weight: 500;
+}
+.hp-subtitle h3 {
+    font-size: var(--font-p);
+    font-weight: 500;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+.hp-mid-part {
+    width: 100%;
+    opacity: 0.2;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hp-main-image {
+    filter: invert(100%);
+    margin: 0;
+    padding: 0;
+}
+.hp-bottom-part {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hp-button-space {
+    margin: 20px auto;
+    width: 80%;
+
+}
+.hp-button-space a {
+    text-decoration: none;
+}
+.hp-button {
+    background-color: var(--primary-color);
+    /* margin: 20px auto; */
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease .2s;
+}
+.hp-button:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+.hp-button p {
+    margin: 0;
+    padding: 0;
+    color: var(--seconadry-text-color);
+    font-family: var(--main-font);
+    font-weight: 500;
+    padding: 5px 0;
+    white-space: nowrap;
+}
+@media (min-width: var(--screen-mobileL)) {
+    .hp-title h1{
+        font-size: var(--font-gg);
+    }
+}
