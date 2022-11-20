@@ -26,9 +26,30 @@ body, html {
 .sidebar-area{
     height: 40px;
     width: 40px;
-    background: rgba(255, 255, 255, 0);
-    border-radius: 16px;
+    padding: 40px;
+}
+.sidebar-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar-icon img {
+    opacity: 0.5;
+    transition: all ease .2s;
+    height: 25px;
+    width: 25px;    
+    color: #ffffff;
+}
+.sidebar-icon:hover img {
+    opacity: 0.8;
+}
+.sidebar-icon:hover {
+    cursor: pointer;
+
 }

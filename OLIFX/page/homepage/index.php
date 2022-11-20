@@ -13,7 +13,9 @@
     <div class="landing-container">
         <div class="landing-superior-part">
             <div class="sidebar-area">
-                <img src="OLIFX\settings\icons\side_menu.svg" alt="">
+                <div class="sidebar-icon">
+                    <img src="../../settings/resources/icons/menu.png" height="32" width="32" alt="">
+                </div>
             </div>
         </div>
     </div>
