@@ -14,7 +14,7 @@
         <div class="landing-superior-part">
             <div class="sidebar-area">
                 <div class="sidebar-icon">
-                    <img src="../../settings/resources/icons/menu.png" height="32" width="32" alt="">
+                    <img src="../../settings/resources/icons/menu.png" alt="">
                 </div>
             </div>
         </div>
