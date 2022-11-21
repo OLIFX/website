@@ -14,4 +14,3 @@ const DEFAULT_LANGUAGE = 'en-us';
 const DATETIME_FORMAT = 'Y-m-d H:i:s';
 const USER_DATE_FORMAT = 'd/m/Y - H:i';
 const SESSION_LIFETIME = 86400;
-?>

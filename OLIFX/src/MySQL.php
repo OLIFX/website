@@ -1,21 +1,24 @@
 <?php
 
-require_once __DIR__."\Configuracao.php";
+require_once __DIR__ . "\Config.php";
 
 class MySQL{
 
     private $connection;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->connection = new \mysqli(HOST,USUARIO,SENHA,BANCO);
         $this->connection->set_charset("utf8");
     }
 
-    public function executa($sql){
-        $result = $this->connection->query($sql);
-        return $result;
+    public function execute($sql): bool
+    {
+        return $this->connection->query($sql);
     }
-    public function consulta($sql){
+    
+    public function query($sql): array
+    {
         $result = $this->connection->query($sql);
         $item = array();
         $data = array();
@@ -25,4 +28,3 @@ class MySQL{
         return $data;
     }
 }
-?>
