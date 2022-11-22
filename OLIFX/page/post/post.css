@@ -1,0 +1,19 @@
+@import url("../../settings/global.css");
+.form form textarea {
+    resize: vertical;
+    border: 1px solid transparent;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.2rem;
+    background-color: #ddd;
+    border-radius: 8px;
+    font-family: var(--main-font), sans-serif;
+}
+.form form textarea:focus {
+    border: 1px solid #ff9600;
+    background-color: white;
+}
+
+.form {
+    margin-top: 70px;
+    margin-bottom: 100px;
+}

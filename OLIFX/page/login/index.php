@@ -7,8 +7,7 @@ if (isset($_POST["button"])) {
     $user->constructLogin($_POST["email"], $_POST["password"]);
     
     if ($user->authenticate()) {
-        echo "User authenticated.";
-        die();
+        header("location: ../home");
     } else {
         header("location: index.php");
     }
@@ -38,7 +37,6 @@ if (isset($_POST["button"])) {
             <input type="password" name="password" id="password" required>
 
             <a class="link-centered-orange" href="../new">Don't have an account yet? Sign Up</a>
-
             <input type="submit" value="Login" name="button">
         </form>
     </section>
