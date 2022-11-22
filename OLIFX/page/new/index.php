@@ -1,4 +1,25 @@
 <?php
+
+require_once "../../settings/config.php";
+
+if (isset($_POST["button"])) {
+    // If the user didn't choose a profile picture, set the default one.
+    if ($_FILES["profilepic"]["name"] == "") $_FILES["profilepic"]["name"] = "default.jpg";
+    
+    $user = new User();
+    $user->constructorCreate(
+        $_POST["email"],
+        $_POST["cellphone"],
+        $_POST["fullname"],
+        $_POST["password"],
+        $_POST["city"]
+    );
+    $user->setProfilePic($_FILES);
+    $user->save();
+    
+    header("location: ../login/");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +33,7 @@
   <link rel="stylesheet" href="new.css">
 </head>
 <body>
-    <section class="form" enctype="multipart/form-data">
+    <section class="form">
         <form action="index.php" method="post" enctype="multipart/form-data">
             <h1 class="title-in-box">Create Account</h1>
 
