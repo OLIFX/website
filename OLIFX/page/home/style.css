@@ -1,0 +1,104 @@
+@import '../../settings/theme.css';
+@import '../../settings/global.css';
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --bg-color-1: #153843;
+    --bg-color-2: #141923;
+}
+body, html {
+    min-height: 100vh;
+}
+p, input, label, h1, h2, h3, span {
+    font-family: var(--main-font), sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.superior-part {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+}
+.superior-elements {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 22%;
+    align-items: stretch;
+    width: 100%;
+    padding: 40px 30px;
+    padding-bottom: 60px;
+}
+.superior-elements .search {
+    border: 1px solid #ffffff22;
+    background-color: #ffffff22;
+    border-radius: 8px;
+    padding: 3px 5px;
+    color: #fff;
+    width: 100%;
+    min-width: 140px;
+}
+.superior-elements img {
+    border: 1px solid #ffffff22;
+    width: 45px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.middle-part {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    position: absolute;
+    top: 140px;
+    padding: 8% 12%;
+    padding-bottom: 20%;
+    width: 100%;
+}
+.middle-part .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 4% 5%;
+    box-shadow: -1px 2px 20px 0px #141923;
+}
+.middle-part .card img {
+    align-self: center;
+    max-width: 100%;
+    border-radius: 12px;
+}
+.middle-part .card .card-title {
+    font-weight: 900;
+    padding: 8px 2px;
+    white-space: initial;
+    word-wrap: break-word;
+    font-size: var(--font-pp);
+}
+.middle-part .card .card-description {
+    font-size: var(--font-p);
+}
+
+
+.bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    padding: 5% 10%;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid red;
+}
+.bottom-navigation img {
+    width: 25px;
+    /* Filter to orange */
+    filter: invert(52%) sepia(59%) saturate(825%) hue-rotate(357deg) brightness(106%) contrast(110%);
+}
