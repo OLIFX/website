@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +10,28 @@
 <body>
     <div class="landing-container">
         <div class="landing-superior-part">
-            <div class="sidebar-area">
-                <div class="sidebar-icon">
-                    <img src="../../settings/resources/icons/menu.png" alt="">
+            <div class="landing-superior-area">
+                <div class="search-area">
+                    <div class="landingpage-search">
+                        <input type="text" name="userSearch" class="search-input" placeholder="Search your product here...">
+                    </div>
+                </div>
+                <div class="user-account-config">
+                    <a href="#">
+                        <img src="./images/Netflix-avatar.png" alt="" class="user-pic">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="middle-landing-part">
+            <div class="middle-l-part-area">
+                <div class="landing-card">
+                    <div class="card-image">
+                        AAAAAAAAAAA
+                    </div>
+                    <div class="card-text">
+
+                    </div>
                 </div>
             </div>
         </div>

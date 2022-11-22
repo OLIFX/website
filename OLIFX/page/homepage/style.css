@@ -22,34 +22,80 @@ body, html {
     height: 40vh;
     background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
     /* color: var(--secondary-text-color); */
+    display: flex;
+    justify-content: space-evenly;
+    /* align-content: center; */
+    padding-top: 40px;
 }
-.sidebar-area{
+.landing-superior-area {
+    width: 80%;
+    margin: 0 auto;
+    max-width: var(--screen-laptop);
+    min-width: var(--screen-mobileS);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.search-area {
+    width: 40%;
+    min-width: 210px;
+}
+.landingpage-search {
+
+}
+.user-account-config img {
+    transition: all ease .2s;
     height: 40px;
     width: 40px;
-    padding: 40px;
-}
-.sidebar-icon {
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+}
+.user-account-config img:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+.search-input {
+    width: 100%;
     height: 40px;
-    width: 40px;
+    background-color: #ffffff3d;
+    border-radius: 10px;
+    border: 0 solid #ffffff3d;
+    outline-color: var(--primary-color);
+    color: #ffffff9a;
+    font-family: var(--main-font);
+    padding: 5px;
+    transition: all ease .2s;
+}
+.landingpage-search input::placeholder {
+    font-family: var(--main-font);
+    padding: 5px;
+    color: #ffffff9a;
+}
+.middle-landing-part {
+    width: 100%;
+    background-color: #f0f0f0;
+}
+.middle-l-part-area {
+    width: 80%;
+    margin: auto;
+    max-width: var(--screen-laptop);
+    height: fit-content;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.sidebar-icon img {
-    opacity: 0.5;
-    transition: all ease .2s;
-    height: 25px;
-    width: 25px;    
-    color: #ffffff;
+.landing-card {
+    height: 400px;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.404);
+    padding: 10px;
 }
-.sidebar-icon:hover img {
-    opacity: 0.8;
+.card-image {
+    height: 50%;
+    width: 90%;
 }
-.sidebar-icon:hover {
-    cursor: pointer;
+.card-text {
 
 }
