@@ -160,13 +160,14 @@ class User implements  ActiveRecord
     public function authenticate(): bool
     {
         $connection = new MySQL();
-        $sql = "SELECT idUser, email, password FROM user WHERE email = '{$this->email}'";
+        $sql = "SELECT idUser, email, fullName, password FROM user WHERE email = '{$this->email}'";
         $results = $connection->query($sql);
         
         if (password_verify($this->password, $results[0]["password"])) {
             session_start();
             $_SESSION['idUser'] = $results[0]['idUser'];
             $_SESSION['email'] = $results[0]['email'];
+            $_SESSION['fullName'] = $results[0]['fullName'];
             return true;
         } else {
             return false;

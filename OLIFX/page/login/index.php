@@ -7,8 +7,7 @@ if (isset($_POST["button"])) {
     $user->constructLogin($_POST["email"], $_POST["password"]);
     
     if ($user->authenticate()) {
-        echo "User authenticated.";
-        die();
+        header("location: ../home");
     } else {
         header("location: index.php");
     }
