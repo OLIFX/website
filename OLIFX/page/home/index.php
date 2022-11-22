@@ -44,8 +44,16 @@
         </div>
 
         <div class="bottom-navigation">
+            <div class="anchor selected">
+                <img src="../../assets/icons/home.png" alt="Home" class="home selected">
+            </div>
+
             <div class="anchor">
-                <img src="../../assets/icons/home.png" alt="Home" class="home">
+                <img src="../../assets/icons/star-o.png" alt="Home" class="home">
+            </div>
+
+            <div class="anchor">
+                <img src="../../assets/icons/new-o.png" alt="Home" class="home">
             </div>
         </div>
     </div>

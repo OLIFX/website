@@ -39,7 +39,7 @@ p, input, label, h1, h2, h3, span {
 .superior-elements .search {
     border: 1px solid #ffffff22;
     background-color: #ffffff22;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 3px 5px;
     color: #fff;
     width: 100%;
@@ -49,7 +49,12 @@ p, input, label, h1, h2, h3, span {
     border: 1px solid #ffffff22;
     width: 45px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all ease .2s;
+}
+.superior-elements img:hover {
+    cursor: pointer;
+    transform: translateY(-4px);
 }
 
 
@@ -60,7 +65,7 @@ p, input, label, h1, h2, h3, span {
     position: absolute;
     top: 140px;
     padding: 8% 12%;
-    padding-bottom: 20%;
+    padding-bottom: 100px;
     width: 100%;
 }
 .middle-part .card {
@@ -71,6 +76,10 @@ p, input, label, h1, h2, h3, span {
     background-color: #fff;
     padding: 4% 5%;
     box-shadow: -1px 2px 20px 0px #141923;
+    transition: all ease .4s;
+}
+.middle-part .card:hover {
+    transform: translateY(-8px);
 }
 .middle-part .card img {
     align-self: center;
@@ -90,15 +99,39 @@ p, input, label, h1, h2, h3, span {
 
 
 .bottom-navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
-    padding: 5% 10%;
+    padding: 20px 10%;
     width: 100%;
     background-color: #fff;
-    border: 1px solid red;
 }
-.bottom-navigation img {
+.bottom-navigation .anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease .2s;
+}
+.bottom-navigation .anchor:hover {
+    transform: translateY(-4px);
+}
+.bottom-navigation .anchor img {
+    opacity: 1;
+    filter: invert(50%);
     width: 25px;
+}
+.bottom-navigation .anchor.selected {
+    background-color: #ff960035;
+    box-shadow: 0px 0px 20px #ff9600cc;
+}
+.bottom-navigation .anchor.selected img {
+    opacity: 1;
     /* Filter to orange */
     filter: invert(52%) sepia(59%) saturate(825%) hue-rotate(357deg) brightness(106%) contrast(110%);
 }
