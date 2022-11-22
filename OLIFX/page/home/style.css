@@ -56,6 +56,14 @@ p, input, label, h1, h2, h3, span {
     cursor: pointer;
     transform: translateY(-4px);
 }
+.superior-elements .home-welcome {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #fff;
+    font-size: 12px;
+    display: block;
+}
 
 
 .middle-part {
@@ -93,8 +101,13 @@ p, input, label, h1, h2, h3, span {
     word-wrap: break-word;
     font-size: var(--font-pp);
 }
-.middle-part .card .card-description {
+.middle-part .card .card-description, .card-price {
     font-size: var(--font-p);
+}
+.card-price {
+    padding-top: 5px;
+    font-weight: 900;
+    text-align: right;
 }
 
 
