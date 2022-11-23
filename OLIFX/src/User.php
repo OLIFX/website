@@ -133,6 +133,14 @@ class User implements  ActiveRecord
         return $user;
     }
 
+    public static function findUserFullNameByIdUser($idUser): string
+    {
+        $connection = new MySQL();
+        $sql = "SELECT fullName FROM user WHERE idUser = {$idUser};";
+        $result = $connection->query($sql);
+        return $result[0]["fullName"];
+    }
+
     public static function findall(): array
     {
         $connection = new MySQL();

@@ -59,7 +59,6 @@ class Product implements  ActiveRecord
     public function  setDate_time(string $date_time): void {
         $this->date_time = $date_time;
     }
-
     
     public function save(): bool
     {
@@ -110,16 +109,9 @@ class Product implements  ActiveRecord
         
         return $products;
     }
-    
-    public static function findUserFullNameByIdUser($idUser): string
-    {
-        $connection = new MySQL();
-        $sql = "SELECT fullName FROM user WHERE idUser = {$idUser};";
-        $result = $connection->query($sql);
-        return $result[0]["fullName"];
-    }
 
-    public static function findallByUser($idUser):array{
+    public static function findallByUser($idUser): array
+    {
         $connection = new MySQL();
         $sql = "SELECT * FROM product WHERE idUser = {$idUser}";
         $results = $connection->query($sql);

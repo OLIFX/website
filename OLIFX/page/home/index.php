@@ -52,8 +52,11 @@ $products = Product::findall();
 
                     echo "<p class=\"card-title\">{$product->getTitle()}</p>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
-                    $vendor = Product::findUserFullNameByIdUser($product->getIdUser());
-                    echo "<p class=\"card-description\"><em>Posted by</em> {$vendor}</p>";
+                    
+                    $publisher = User::findUserFullNameByIdUser($product->getIdUser());
+                    $datetime = date_create($product->getDate_time());
+                    $dateFormatted = date_format($datetime, "Y/m/d H:i:s");
+                    echo "<p class=\"card-published\"><em>Posted by</em> {$publisher} <em>at</em> {$dateFormatted}</p>";
                     
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";
