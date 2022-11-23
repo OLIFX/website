@@ -44,7 +44,7 @@ if (isset($_POST["button"])) {
             <input type="email" name="email" id="email" required>
 
             <label for="cellphone">Phone number</label>
-            <input type="tel" name="cellphone" id="cellphone" required>
+            <input type="tel" name="cellphone" id="cellphone" value="" required onChange="contactSeparators()">
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
@@ -58,5 +58,29 @@ if (isset($_POST["button"])) {
             <input type="submit" value="Create" name="button">
         </form>
     </section>
+    <script>
+        function mascara(o,f){
+            v_obj=o
+            v_fun=f
+            setTimeout("execmascara()",1)
+        }
+        function execmascara(){
+            v_obj.value=v_fun(v_obj.value)
+        }
+        function mtel(v){
+            v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+            v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+        function id( el ){
+            return document.getElementById( el );
+        }
+        window.onload = function(){
+            id('cellphone').onkeyup = function(){
+                mascara( this, mtel );
+            }
+        }
+    </script>
 </body>
 </html>
