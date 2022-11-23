@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . "\Config.php";
+require_once("Config.php");
 
 class MySQL{
-
+    
     private $connection;
 
     public function __construct()

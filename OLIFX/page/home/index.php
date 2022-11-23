@@ -52,6 +52,8 @@ $products = Product::findall();
 
                     echo "<p class=\"card-title\">{$product->getTitle()}</p>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
+                    $vendor = Product::findUserFullNameByIdUser($product->getIdUser());
+                    echo "<p class=\"card-description\"><em>Posted by</em> {$vendor}</p>";
                     
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";

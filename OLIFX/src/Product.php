@@ -19,6 +19,10 @@ class Product implements  ActiveRecord
     public function setIdUser(int $idUser): void {
         $this->idUser = $idUser;
     }
+    
+    public function getIdUser(): int {
+        return $this->idUser;
+    }
 
     public function getIdProduct(): int {
         return $this->idProduct;
@@ -105,6 +109,14 @@ class Product implements  ActiveRecord
         }
         
         return $products;
+    }
+    
+    public static function findUserFullNameByIdUser($idUser): string
+    {
+        $connection = new MySQL();
+        $sql = "SELECT fullName FROM user WHERE idUser = {$idUser};";
+        $result = $connection->query($sql);
+        return $result[0]["fullName"];
     }
 
     public static function findallByUser($idUser):array{
