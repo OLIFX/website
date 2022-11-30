@@ -26,7 +26,30 @@ $products = Product::findall();
         <div class="superior-part">
             <div class="superior-elements">
                 <input type="text" class="search" placeholder="Search something...">
-                <img src="../../assets/images/default.png" alt="Default icon">
+                <div class="user-area">
+                    <img src="../../assets/images/default.png" id="userImage" alt="Default icon">
+                    <div class="dropdown-menu">
+                        <h1 class="dropdown-title">
+                            Select an Option
+                        </h1>
+                        <div class="dropdown-option">
+                            <a href="">
+                                <img src="./icons/gear.svg" alt="" class="dropdown-icon">
+                                <h2 class="dropdown-option-title">
+                                    Edit account
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="dropdown-option">
+                            <a href="">
+                                <img src="./icons/product-box.svg" alt="" class="dropdown-icon">
+                                <h2 class="dropdown-option-title">
+                                    My products
+                                </h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
