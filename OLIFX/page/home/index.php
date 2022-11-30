@@ -9,6 +9,7 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 $products = Product::findall();
+$directory = __DIR__ . "/../../database/users/";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ $products = Product::findall();
         <div class="superior-part">
             <div class="superior-elements">
                 <input type="text" class="search" placeholder="Search something...">
-                <img src="../../assets/images/default.png" alt="Default icon">
+                <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
 
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>

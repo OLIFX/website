@@ -81,11 +81,7 @@ class User implements  ActiveRecord
     public function save(): bool 
     {
         $connection = new MySQL();
-<<<<<<< HEAD
-        $directory = "../../Database/users/";
-=======
         $directory = __DIR__ . "/../Database/users/";
->>>>>>> 56354ac83421cc6b72ac4475dcfb6de824e62a5b
 
         if ($this->getProfilePic()["profilepic"]["name"] != "default.jpg") {
             $file_name = $this->profilePic['profilepic']['name'];
@@ -94,7 +90,9 @@ class User implements  ActiveRecord
 
             $this->profilePic = uniqid().".".$extension;
             
-            move_uploaded_file($_FILES["profilepic"]["tmp_name"], $directory . $this->profilePic);
+            if (!move_uploaded_file($_FILES["profilepic"]["tmp_name"], $directory . $this->profilePic)) {
+                die("Upload failed.");
+            }
         }
         else {
             $this->profilePic = "default.jpg";
@@ -172,7 +170,7 @@ class User implements  ActiveRecord
     public function authenticate(): bool
     {
         $connection = new MySQL();
-        $sql = "SELECT idUser, email, fullName, password FROM user WHERE email = '{$this->email}'";
+        $sql = "SELECT idUser, email, fullName, password, profilePic FROM user WHERE email = '{$this->email}'";
         $results = $connection->query($sql);
         
         if (password_verify($this->password, $results[0]["password"])) {
@@ -180,6 +178,7 @@ class User implements  ActiveRecord
             $_SESSION['idUser'] = $results[0]['idUser'];
             $_SESSION['email'] = $results[0]['email'];
             $_SESSION['fullName'] = $results[0]['fullName'];
+            $_SESSION['profilePic'] = $results[0]['profilePic'];
             return true;
         } else {
             return false;
