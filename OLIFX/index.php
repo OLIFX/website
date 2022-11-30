@@ -16,14 +16,14 @@ require_once __DIR__.'/settings/config.php';
         <div class="homepage-util-area">
             <div class="hp-superior-part">
                 <div class="hp-title">
-                    <h1>Easy Selling Products Platform</h1>
+                    <h1>Welcome to OLIFX</h1>
                 </div>
                 <div class="hp-subtitle">
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+                    <h3>Platform to advertise and sell products among the IFRS Campus Feliz community.</h3>
                 </div>
             </div>
             <div class="hp-mid-part">
-                <img src="./assets/images/city.svg" alt="" class="hp-main-image">
+                <img src="./assets/images/OLIFX.png" alt="" class="hp-main-image">
             </div>
             <div class="hp-bottom-part">
                 <div class="hp-button-space">
