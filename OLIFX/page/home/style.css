@@ -68,8 +68,9 @@ p, input, label, h1, h2, h3, span {
 
 .middle-part {
     display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+    justify-content: center;
+    flex-direction: row;
+    gap: 7%;
     position: absolute;
     top: 140px;
     padding: 8% 12%;
@@ -85,6 +86,7 @@ p, input, label, h1, h2, h3, span {
     padding: 4% 5%;
     box-shadow: -1px 2px 20px 0px #141923;
     transition: all ease .4s;
+    max-width: 400px;
 }
 .middle-part .card:hover {
     transform: translateY(-8px);

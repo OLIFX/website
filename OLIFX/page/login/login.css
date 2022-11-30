@@ -25,6 +25,7 @@ h1, input, label {
     background-color: white;
     padding: 0.8rem;
     border-radius: 20px;
+    max-width: 500px;
 }
 .title-in-box {
     color: var(--primary-color);

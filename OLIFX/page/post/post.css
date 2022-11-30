@@ -12,8 +12,10 @@
     border: 1px solid #ff9600;
     background-color: white;
 }
-
 .form {
     margin-top: 70px;
     margin-bottom: 100px;
+}
+form {
+    max-width: 500px;
 }
