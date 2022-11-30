@@ -9,7 +9,7 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 $products = Product::findall();
-$directory = __DIR__ . "/../../database/users/";
+$directory = "../../database/users/";
 ?>
 
 <!DOCTYPE html>
