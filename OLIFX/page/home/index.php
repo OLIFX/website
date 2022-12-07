@@ -56,8 +56,8 @@ $directory = "../../database/users/";
                     
                     $publisher = User::findUserFullNameByIdUser($product->getIdUser());
                     $datetime = date_create($product->getDate_time());
-                    $dateFormatted = date_format($datetime, "Y/m/d H:i:s");
-                    echo "<p class=\"card-published\"><em>Posted by</em> {$publisher} <em>at</em> {$dateFormatted}</p>";
+                    $dateFormatted = date_format($datetime, "m/d/Y");
+                    echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
                     
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";

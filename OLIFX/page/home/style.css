@@ -87,9 +87,10 @@ p, input, label, h1, h2, h3, span {
     padding: 20px;
     box-shadow: -1px 2px 20px 0px #141923;
     transition: all ease .4s;
-    max-width: 400px;
+    max-width: 300px;
     min-width: 250px;
     margin: 15px;
+    overflow-x: hidden;
 }
 .middle-part .card:hover {
     transform: translateY(-8px);
@@ -119,6 +120,16 @@ p, input, label, h1, h2, h3, span {
     padding-top: 5px;
     font-weight: 400;
     text-align: center;
+    font-size: 13px;
+    opacity: 0.8;
+}
+.card-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 
