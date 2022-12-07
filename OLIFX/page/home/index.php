@@ -33,7 +33,7 @@ $products = Product::findall();
                             Select an Option
                         </h1>
                         <div class="dropdown-option">
-                            <a href="">
+                            <a href="../edit-account">
                                 <img src="./icons/gear.svg" alt="" class="dropdown-icon">
                                 <h2 class="dropdown-option-title">
                                     Edit account
