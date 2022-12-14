@@ -57,8 +57,20 @@ class User implements  ActiveRecord
         return $this->email;
     }
 
+    public function getCellphone(): string {
+        return $this->cellphone;
+    }
+
+    public function getCity(): string {
+        return $this->city;
+    }
+
     public function setCellphone(string $cellphone): void {
         $this->cellphone = $cellphone;
+    }
+
+    public function getFullName(): string {
+        return $this->fullName;
     }
 
     public function setFullName(string $fullName): void {
@@ -96,11 +108,11 @@ class User implements  ActiveRecord
             $this->profilePic = "default.jpg";
         }
         
-        $this->password = password_hash($this->password,PASSWORD_BCRYPT);
         
         if(isset($this->idUser)){
-            $sql = "UPDATE user SET email = '{$this->email}', password = '{$this->password}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}',  WHERE idUser = {$this->idUser}";
+            $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}', profilePic = '{$this->profilePic}' WHERE idUser = {$this->idUser}";
         }else{
+            $this->password = password_hash($this->password,PASSWORD_BCRYPT);
             $sql = "INSERT INTO user (email,password,fullName, cellphone, city, profilePic) VALUES ('{$this->email}','{$this->password}','{$this->fullName}','{$this->cellphone}','{$this->city}','$this->profilePic')";
         }
         return $connection->execute($sql);
