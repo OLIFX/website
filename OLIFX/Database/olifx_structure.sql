@@ -90,11 +90,6 @@ ALTER TABLE `favorite`
   ADD KEY `FK_UserFavorite` (`idUser`),
   ADD KEY `FK_ProductFavorite` (`idProduct`);
 
---
--- Índices para tabela `media`
---
-ALTER TABLE `media`
-  ADD KEY `FK_ProductMedia` (`idProduct`);
 
 --
 -- Índices para tabela `product`
@@ -114,12 +109,6 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de tabela `product`
---
-ALTER TABLE `product`
-  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `user`
 --
 ALTER TABLE `user`
@@ -136,11 +125,6 @@ ALTER TABLE `favorite`
   ADD CONSTRAINT `FK_ProductFavorite` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
   ADD CONSTRAINT `FK_UserFavorite` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
---
--- Limitadores para a tabela `media`
---
-ALTER TABLE `media`
-  ADD CONSTRAINT `FK_ProductMedia` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
 
 --
 -- Limitadores para a tabela `product`
