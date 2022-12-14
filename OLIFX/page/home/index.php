@@ -59,8 +59,7 @@ $directory = "../../database/users/";
                         echo "<div class=\"card\">";
                         echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
                     }
-                    
-                    echo "<p class=\"card-title\">{$product->getTitle()}</p>";
+                    echo "<a href=\"../view-product/index.php?idProduct={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
                     
                     $publisher = User::findUserFullNameByIdUser($product->getIdUser());
