@@ -102,9 +102,7 @@ class User implements  ActiveRecord
 
             $this->profilePic = uniqid().".".$extension;
             
-            if (!move_uploaded_file($_FILES["profilepic"]["tmp_name"], $directory . $this->profilePic)) {
-                die("Failed upload");
-            }
+            move_uploaded_file($_FILES["profilepic"]["tmp_name"], $directory . $this->profilePic);
         }
         else {
             $this->profilePic = "default.jpg";
@@ -112,7 +110,7 @@ class User implements  ActiveRecord
         
         
         if(isset($this->idUser)){
-            $sql = "UPDATE user SET email = '{$this->email}', password = '{$this->password}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}',  WHERE idUser = {$this->idUser}";
+            $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}', profilePic = '{$this->profilePic}' WHERE idUser = {$this->idUser}";
         }else{
             $this->password = password_hash($this->password,PASSWORD_BCRYPT);
             $sql = "INSERT INTO user (email,password,fullName, cellphone, city, profilePic) VALUES ('{$this->email}','{$this->password}','{$this->fullName}','{$this->cellphone}','{$this->city}','$this->profilePic')";

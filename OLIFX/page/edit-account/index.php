@@ -8,13 +8,13 @@ if (isset($_SESSION['idUser'])) {
     $user = User::find($_SESSION['idUser']);
     if (isset($_POST["button"])) {
         if ($_FILES["profilepic"]["name"] == "") $_FILES["profilepic"]["name"] = "default.jpg";
-        // var_dump($_POST);
-        // die();
+
         $user->setFullName($_POST['name']);
         $user->setEmail($_POST['email']);
         $user->setCellphone($_POST['cellphone']);
         $user->setCity($_POST['city']);
         $user->setProfilePic($_FILES);
+        
         if ($user->save()) {
             // echo "<script>alert('Your profile was updated successfully!');</script>";
             header('location: ../home');
@@ -39,7 +39,7 @@ if (isset($_SESSION['idUser'])) {
 <body>
     <div class="edit-account-container">
         <section class="edit-account-form">
-            <form action="index.php" method="post">
+            <form action="index.php" method="post" enctype="multipart/form-data">
                 <h1 class="edit-account-form-title">Edit your account</h1>
 
                 <label for="name">Full name</label>
@@ -79,7 +79,7 @@ if (isset($_SESSION['idUser'])) {
                 <input type="text" name="city" id="city" value="<?php echo $user->getCity()?>" required>
 
                 <label for="profilepic">Profile picture</label>
-                <input type="file" name="profilepic" id="profilepic" value=<?php echo $user->getProfilePic()?>>
+                <input type="file" name="profilepic" id="profilepic">
 
                 <input type="submit" value="Edit" name="button">
             </form>
