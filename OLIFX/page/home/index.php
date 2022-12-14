@@ -48,9 +48,18 @@ $directory = "../../database/users/";
                 }
 
                 foreach($products as $product) {
-                    echo "<div class=\"card\">";
-                    echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
-
+                    
+                    $id = $product->getIdProduct();
+                    if(Media::existeMediaProduto($id)){
+                        $img = Media::findMediaByProduct($id);
+                        echo "<div class=\"card\">";
+                        echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
+                    }else{
+                        
+                        echo "<div class=\"card\">";
+                        echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                    }
+                    
                     echo "<p class=\"card-title\">{$product->getTitle()}</p>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
                     
