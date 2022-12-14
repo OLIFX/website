@@ -48,6 +48,7 @@ $directory = "../../database/users/";
         }
 
         foreach($products as $product) {
+            echo "<a href=\"../view-product/index.php?idProduct={$product->getIdProduct()}\">";
             echo "<div class=\"card\">";
             echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
 
@@ -63,6 +64,7 @@ $directory = "../../database/users/";
             echo "<p class='card-price'>R$ {$value}</p>";
 
             echo "</div>";
+            echo "</a>";
         }
         ?>
     </div>
