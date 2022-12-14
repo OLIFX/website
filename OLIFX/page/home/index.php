@@ -22,53 +22,6 @@ $directory = "../../database/users/";
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
     <title>OLIFX | Home</title>
-    
-    <style>
-        /* Dropdown Button */
-        .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Dropdown button on hover & focus */
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #2980B9;
-        }
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: #ddd;}
-
-        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-        .show {display:block;}
-    </style>
 </head>
 <body>
     <div class="container">
@@ -76,17 +29,8 @@ $directory = "../../database/users/";
             <div class="superior-elements">
                 <input type="text" class="search" placeholder="Search something...">
                 
-                
                 <div class="user-area">
-                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon" onclick="toggleDropDown()">
-                    
-                    <div class="dropdown-menu">
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
+                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
                 </div>
                 
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
