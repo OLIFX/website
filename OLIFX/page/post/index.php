@@ -8,9 +8,18 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 if (isset($_POST["button"])) {
+    $connection = new MySQL();
+    $sql = "SELECT COUNT(*) as numero FROM product";
+    $result = $connection->query($sql);
+    $c = $result[0]['numero'];
     $product = new Product($_POST["title"], $_POST["description"], $_POST["price"]);
     $product->setIdUser($_SESSION["idUser"]);
+    
     $product->save();
+    $media = new Media();
+    $media->setIdProduct($c);
+    $media->setPath($_FILES);
+    $media->save();
 
     header("location: ../home");
 }
