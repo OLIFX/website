@@ -33,6 +33,12 @@ $directory = "../../database/users/";
                     <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
                 </div>
                 
+                <div class="dropdown">
+                    <a href="../edit-account/">Edit your account</a>
+                    <a href="../edit-account/">Your products</a>
+                    <a href="../login/logout.php">Log out</a>
+                </div>
+                
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
         </div>
