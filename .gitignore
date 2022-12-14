@@ -3,6 +3,8 @@ OLIFX/vendor/
 
 */Database/users/*.jpg
 */Database/users/*.png
+*/Database/media/*.jpg
+*/Database/media/*.png
 
 *.idea/
 .htaccess

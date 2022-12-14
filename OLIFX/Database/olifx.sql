@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Nov-2022 às 01:05
+-- Tempo de geração: 14-Dez-2022 às 13:33
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -16,13 +16,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Banco de dados: `olifx`
--- Criação do banco de dados
 --
+
 CREATE DATABASE IF NOT EXISTS `olifx`;
 USE `olifx`;
-
 -- --------------------------------------------------------
 
 --
@@ -44,8 +44,17 @@ CREATE TABLE `favorite` (
 CREATE TABLE `media` (
   `idProduct` int(11) NOT NULL,
   `path` varchar(100) NOT NULL,
-  `type` varchar(50) NOT NULL
+  `idMedia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `media`
+--
+
+INSERT INTO `media` (`idProduct`, `path`, `idMedia`) VALUES
+(0, '6399b79bb04d8.jpg', 12),
+(1, '6399b7aa49da1.jpg', 13),
+(2, '6399b82b62c8d.jpg', 14);
 
 -- --------------------------------------------------------
 
@@ -61,6 +70,17 @@ CREATE TABLE `product` (
   `price` decimal(18,2) NOT NULL,
   `date_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `product`
+--
+
+INSERT INTO `product` (`idProduct`, `idUser`, `title`, `description`, `price`, `date_time`) VALUES
+(0, 3, 'Pombo', 'richalisonnnn', '1000.00', '2022-12-14'),
+(1, 3, 'omnitrix', 'teste', '500.00', '2022-12-14'),
+(2, 3, 'caneta azul', 'azul caneta', '10000000.00', '2022-12-14'),
+(3, 3, 'teste sem media', 'rgeggrtegtr', '100.00', '2022-12-14'),
+(4, 3, 'Caneta azul 2.0', 'teste', '20000.00', '2022-12-14');
 
 -- --------------------------------------------------------
 
@@ -79,6 +99,15 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`idUser`, `email`, `cellphone`, `fullName`, `profilePic`, `password`, `city`) VALUES
+(1, 'theuspersch@gmail.com', '(51) 99883-9655', 'teste', 'default.jpg', '$2y$10$kprnZQhIRPRMcIL53mthDeAWVaojwRZmDOhfcblyc2L/h469LnVii', 'teste'),
+(2, 'xxx@xxx', '(11) 11111111-1111', 'Teste supremo', '63874ac01c4ec.jpg', '$2y$10$CAGLT3ORLj3nq99u.HpRR.03tg5qkVsrn/BJZ4pK6q1Wy.17Eiw1a', 'teste'),
+(3, 'dicionario16@gmail.com', '(51) 99883-9655', 'Matheus Persch', '63906d31da2c3.jpg', '$2y$10$3R7KmQMXNOvZejlGki3QyO3P.Tj2GuBeLOEoIRYJi7AyS7VT4M0oO', 'Bom Principio');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -94,7 +123,7 @@ ALTER TABLE `favorite`
 -- Índices para tabela `media`
 --
 ALTER TABLE `media`
-  ADD KEY `FK_ProductMedia` (`idProduct`);
+  ADD PRIMARY KEY (`idMedia`);
 
 --
 -- Índices para tabela `product`
@@ -114,16 +143,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de tabela `product`
+-- AUTO_INCREMENT de tabela `media`
 --
-ALTER TABLE `product`
-  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `media`
+  MODIFY `idMedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
@@ -135,12 +164,6 @@ ALTER TABLE `user`
 ALTER TABLE `favorite`
   ADD CONSTRAINT `FK_ProductFavorite` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
   ADD CONSTRAINT `FK_UserFavorite` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
-
---
--- Limitadores para a tabela `media`
---
-ALTER TABLE `media`
-  ADD CONSTRAINT `FK_ProductMedia` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
 
 --
 -- Limitadores para a tabela `product`
