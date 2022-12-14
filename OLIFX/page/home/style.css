@@ -49,7 +49,8 @@ p, input, label, h1, h2, h3, span {
 .superior-elements img {
     border: 1px solid #ffffff22;
     width: 45px;
-    height: auto;
+    height: 45px;
+    object-fit: cover;
     border-radius: 12px;
     transition: all ease .2s;
 }
@@ -117,8 +118,8 @@ p, input, label, h1, h2, h3, span {
 .middle-part {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    gap: 7%;
+    flex-direction: column;
+    flex-wrap: wrap;
     position: absolute;
     top: 140px;
     padding: 8% 12%;
@@ -131,10 +132,13 @@ p, input, label, h1, h2, h3, span {
     width: 100%;
     border-radius: 15px;
     background-color: #fff;
-    padding: 4% 5%;
+    padding: 20px;
     box-shadow: -1px 2px 20px 0px #141923;
     transition: all ease .4s;
-    max-width: 400px;
+    max-width: 300px;
+    min-width: 250px;
+    margin: 15px;
+    overflow-x: hidden;
 }
 .middle-part .card:hover {
     transform: translateY(-8px);
@@ -143,6 +147,7 @@ p, input, label, h1, h2, h3, span {
     align-self: center;
     max-width: 100%;
     border-radius: 12px;
+    object-fit: cover;
 }
 .middle-part .card .card-title {
     font-weight: 900;
@@ -158,6 +163,21 @@ p, input, label, h1, h2, h3, span {
     padding-top: 5px;
     font-weight: 900;
     text-align: right;
+}
+.card-published {
+    padding-top: 5px;
+    font-weight: 400;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.8;
+}
+.card-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 
@@ -197,4 +217,11 @@ p, input, label, h1, h2, h3, span {
     opacity: 1;
     /* Filter to orange */
     filter: invert(52%) sepia(59%) saturate(825%) hue-rotate(357deg) brightness(106%) contrast(110%);
+}
+
+@media (min-width: 500px) {
+    .middle-part {
+        display: flex;
+        flex-direction: row;
+    }
 }

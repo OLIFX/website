@@ -9,6 +9,7 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 $products = Product::findall();
+$directory = "../../database/users/";
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,7 @@ $products = Product::findall();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
     <title>OLIFX | Home</title>
 </head>
 <body>
@@ -26,31 +28,11 @@ $products = Product::findall();
         <div class="superior-part">
             <div class="superior-elements">
                 <input type="text" class="search" placeholder="Search something...">
+                
                 <div class="user-area">
-                    <img src="../../assets/images/default.png" id="userImage" alt="Default icon">
-                    <div class="dropdown-menu">
-                        <h1 class="dropdown-title">
-                            Select an Option
-                        </h1>
-                        <div class="dropdown-option">
-                            <a href="../edit-account">
-                                <img src="./icons/gear.svg" alt="" class="dropdown-icon">
-                                <h2 class="dropdown-option-title">
-                                    Edit account
-                                </h2>
-                            </a>
-                        </div>
-                        <div class="dropdown-option">
-                            <a href="">
-                                <img src="./icons/product-box.svg" alt="" class="dropdown-icon">
-                                <h2 class="dropdown-option-title">
-                                    My products
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
+                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
                 </div>
-
+                
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
         </div>
@@ -70,11 +52,25 @@ $products = Product::findall();
                 }
 
                 foreach($products as $product) {
-                    echo "<div class=\"card\">";
-                    echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
-
+                    
+                    $id = $product->getIdProduct();
+                    if(Media::existeMediaProduto($id)){
+                        $img = Media::findMediaByProduct($id);
+                        echo "<div class=\"card\">";
+                        echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
+                    }else{
+                        
+                        echo "<div class=\"card\">";
+                        echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                    }
+                    
                     echo "<p class=\"card-title\">{$product->getTitle()}</p>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
+                    
+                    $publisher = User::findUserFullNameByIdUser($product->getIdUser());
+                    $datetime = date_create($product->getDate_time());
+                    $dateFormatted = date_format($datetime, "m/d/Y");
+                    echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
                     
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";
@@ -105,5 +101,7 @@ $products = Product::findall();
             </a>
         </div>
     </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

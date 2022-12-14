@@ -5,11 +5,13 @@ class Product implements  ActiveRecord
     private int $idProduct;
     private int $idUser;
     private string $date_time;
+    
 
     public function __construct(
         private string $title,
         private string $description,
         private float $price
+        
     ) {}
 
     public function setIdProduct(int $idProduct): void {
@@ -18,6 +20,10 @@ class Product implements  ActiveRecord
 
     public function setIdUser(int $idUser): void {
         $this->idUser = $idUser;
+    }
+    
+    public function getIdUser(): int {
+        return $this->idUser;
     }
 
     public function getIdProduct(): int {
@@ -55,7 +61,6 @@ class Product implements  ActiveRecord
     public function  setDate_time(string $date_time): void {
         $this->date_time = $date_time;
     }
-
     
     public function save(): bool
     {
@@ -63,7 +68,11 @@ class Product implements  ActiveRecord
         if (isset($this->idProduct)) {
             $sql = "UPDATE product SET title = '{$this->title}' ,description = '{$this->description}', price = '{$this->price}' WHERE idProduct = {$this->idProduct}";
         } else {
-            $sql = "INSERT INTO product (title,description,idUser,price,date_time) VALUES ('{$this->title}','{$this->description}',{$this->idUser},'{$this->price}', NOW())";
+            $connection = new MySQL();
+            $sqli = "SELECT COUNT(*) as numero FROM product";
+            $result = $connection->query($sqli);
+            $c = $result[0]['numero'];
+            $sql = "INSERT INTO product (title,description,idUser,price,date_time,idProduct) VALUES ('{$this->title}','{$this->description}',{$this->idUser},'{$this->price}', NOW(),$c)";
         }
         
         return $connection->execute($sql);
@@ -107,7 +116,8 @@ class Product implements  ActiveRecord
         return $products;
     }
 
-    public static function findallByUser($idUser):array{
+    public static function findallByUser($idUser): array
+    {
         $connection = new MySQL();
         $sql = "SELECT * FROM product WHERE idUser = {$idUser}";
         $results = $connection->query($sql);
@@ -122,6 +132,16 @@ class Product implements  ActiveRecord
         }
         
         return $products;
+    }
+    public static function countProducts() : int
+    {
+        $connection = new MySQL();
+        $sql = "SELECT COUNT(*) as numero FROM product";
+        $result = $connection->query($sql);
+        $c = $result[0]['numero'];
+        return $c;
+        
+        
     }
 }
 
