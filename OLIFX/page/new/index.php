@@ -46,7 +46,7 @@ if (isset($_POST["button"])) {
             <input type="email" name="email" id="email" required>
 
             <label for="cellphone">Phone number</label>
-            <input type="tel" name="cellphone" id="cellphone" value="" required onChange="contactSeparators()">
+            <input type="tel" name="cellphone" id="cellphone" value="" maxlength="15" minlength="15" required onChange="contactSeparators()">
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
