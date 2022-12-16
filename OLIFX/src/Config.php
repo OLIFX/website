@@ -1,6 +1,6 @@
 <?php
 
 define("HOST", "localhost");
-define("USER", "root");
-define("PASSWORD", "");
+define("USER", "aluno");
+define("PASSWORD", "aluno");
 define("DATABASE", "olifx");
