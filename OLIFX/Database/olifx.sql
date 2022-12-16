@@ -47,15 +47,6 @@ CREATE TABLE `media` (
   `idMedia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `media`
---
-
-INSERT INTO `media` (`idProduct`, `path`, `idMedia`) VALUES
-(0, '6399b79bb04d8.jpg', 12),
-(1, '6399b7aa49da1.jpg', 13),
-(2, '6399b82b62c8d.jpg', 14);
-
 -- --------------------------------------------------------
 
 --
@@ -71,16 +62,6 @@ CREATE TABLE `product` (
   `date_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `product`
---
-
-INSERT INTO `product` (`idProduct`, `idUser`, `title`, `description`, `price`, `date_time`) VALUES
-(0, 3, 'Pombo', 'richalisonnnn', '1000.00', '2022-12-14'),
-(1, 3, 'omnitrix', 'teste', '500.00', '2022-12-14'),
-(2, 3, 'caneta azul', 'azul caneta', '10000000.00', '2022-12-14'),
-(3, 3, 'teste sem media', 'rgeggrtegtr', '100.00', '2022-12-14'),
-(4, 3, 'Caneta azul 2.0', 'teste', '20000.00', '2022-12-14');
 
 -- --------------------------------------------------------
 
@@ -97,15 +78,6 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `city` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `user`
---
-
-INSERT INTO `user` (`idUser`, `email`, `cellphone`, `fullName`, `profilePic`, `password`, `city`) VALUES
-(1, 'theuspersch@gmail.com', '(51) 99883-9655', 'teste', 'default.jpg', '$2y$10$kprnZQhIRPRMcIL53mthDeAWVaojwRZmDOhfcblyc2L/h469LnVii', 'teste'),
-(2, 'xxx@xxx', '(11) 11111111-1111', 'Teste supremo', '63874ac01c4ec.jpg', '$2y$10$CAGLT3ORLj3nq99u.HpRR.03tg5qkVsrn/BJZ4pK6q1Wy.17Eiw1a', 'teste'),
-(3, 'dicionario16@gmail.com', '(51) 99883-9655', 'Matheus Persch', '63906d31da2c3.jpg', '$2y$10$3R7KmQMXNOvZejlGki3QyO3P.Tj2GuBeLOEoIRYJi7AyS7VT4M0oO', 'Bom Principio');
 
 --
 -- Índices para tabelas despejadas

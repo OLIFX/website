@@ -93,7 +93,7 @@ class User implements  ActiveRecord
     public function save(): bool 
     {
         $connection = new MySQL();
-        $directory = __DIR__ . "/../Database/users/";
+        $directory = __DIR__ . "/../database/users/";
 
         if ($this->getProfilePic()["profilepic"]["name"] != "default.jpg") {
             $file_name = $this->profilePic['profilepic']['name'];
