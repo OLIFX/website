@@ -15,7 +15,7 @@ if (isset($_SESSION['idUser'])) {
         $user->setFullName(trim($_POST['name']));
         $user->setEmail(trim($_POST['email']));
         $user->setCellphone(trim($_POST['cellphone']));
-        $user->setCity($_POST['city']);
+        $user->setCity(trim($_POST['city']));
         
         if ($haveProfilePic) {
             $user->setProfilePic($_FILES);
