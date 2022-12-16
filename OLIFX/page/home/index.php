@@ -8,10 +8,11 @@ if (!isset($_SESSION["idUser"])) {
     header("location: ../login");
 }
 
+User::refreshSession();
 $products = Product::findall();
+
 $directory = "../../database/users/";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +27,20 @@ $directory = "../../database/users/";
     <div class="container">
         <div class="superior-part">
             <div class="superior-elements">
-                <input type="text" class="search" placeholder="Search something...">
-                <img src="../../assets/images/default.png" alt="Default icon">
-
+                <form action="">
+                    <input name="s" type="text" class="search" placeholder="Search something...">    
+                </form>
+                
+                <div class="user-area">
+                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+                </div>
+                
+                <div class="dropdown">
+                    <a href="../edit-account/">Edit your account</a>
+                    <a href="../edit-account/">Your products</a>
+                    <a href="../login/logout.php">Log out</a>
+                </div>
+                
                 <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
         </div>
@@ -96,5 +108,7 @@ $directory = "../../database/users/";
             </a>
         </div>
     </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@ class Media implements ActiveRecord
     public function save(): bool
     {
         $connection = new MySQL();
-        $directory = __DIR__ . "/../Database/media/";
+        $directory = __DIR__ . "/../database/media/";
 
         if ($this->getPath() != "default.jpg") {
             $file_name = $this->path['media']['name'];

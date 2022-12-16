@@ -12,7 +12,7 @@
 body, html {
     min-height: 100vh;
 }
-p, input, label, h1, h2, h3, span {
+p, input, label, h1, h2, h3, span, a {
     font-family: var(--main-font), sans-serif;
 }
 .container {
@@ -20,6 +20,30 @@ p, input, label, h1, h2, h3, span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.dropdown {
+    display: none;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 21px;
+    border-radius: 12px;
+    position: absolute;
+    top: 80px;
+    right: 60px;
+    background-color: #fff;
+    z-index: 4;
+    transition: all 0.4s ease-out;
+}
+.dropdown a {
+    color: #363636;
+    opacity: 0.75;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+}
+.dropdown a:hover {
+    opacity: 1;
+    color: #000;
+    text-decoration: underline;
 }
 .superior-part {
     width: 100%;
@@ -36,7 +60,12 @@ p, input, label, h1, h2, h3, span {
     padding: 40px 30px;
     padding-bottom: 60px;
 }
-.superior-elements .search {
+.superior-elements form {
+    width: 100%;
+    min-width: 140px;
+    max-height: 50px;
+}
+.superior-elements form .search {
     border: 1px solid #ffffff22;
     background-color: #ffffff22;
     border-radius: 12px;
@@ -45,6 +74,7 @@ p, input, label, h1, h2, h3, span {
     width: 100%;
     min-width: 140px;
     max-height: 50px;
+    height: 100%;
 }
 .superior-elements img {
     border: 1px solid #ffffff22;
@@ -52,11 +82,9 @@ p, input, label, h1, h2, h3, span {
     height: 45px;
     object-fit: cover;
     border-radius: 12px;
-    transition: all ease .2s;
 }
 .superior-elements img:hover {
     cursor: pointer;
-    transform: translateY(-4px);
 }
 .superior-elements .home-welcome {
     position: absolute;
@@ -73,56 +101,14 @@ p, input, label, h1, h2, h3, span {
     gap: 10px;
     justify-content: space-between;
 }
-.superior-part .dropdown-menu  {
-    background-color: #ffffff;
-    height: fit-content;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 10px;
-    flex-direction: column;
-}
-.dropdown-title {
-    font-size: var(--font-m);
-}
-.dropdown-option {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-.dropdown-option a {
-    text-decoration: none;
-    color: var(--primary-text-color);
-    font-size: var(--font-pp);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all ease .2s;
-}
-.dropdown-option img {
-    height: 25px;
-    width: 25px;
-}
-.dropdown-option h2 {
-    font-size: var(--font-pp);
-}
-.dropdown-option a:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
 .middle-part {
     display: flex;
     justify-content: center;
+    align-self: center;
     flex-direction: column;
     flex-wrap: wrap;
     position: absolute;
     top: 140px;
-    padding: 8% 12%;
     padding-bottom: 100px;
     width: 100%;
 }
@@ -145,9 +131,12 @@ p, input, label, h1, h2, h3, span {
 }
 .middle-part .card img {
     align-self: center;
-    max-width: 100%;
     border-radius: 12px;
     object-fit: cover;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 300px;
+    min-height: 200px;
 }
 .middle-part .card .card-title {
     font-weight: 900;
@@ -223,5 +212,16 @@ p, input, label, h1, h2, h3, span {
     .middle-part {
         display: flex;
         flex-direction: row;
+    }
+}
+
+@media (max-width: 495px) {
+    .middle-part .card {
+        max-width: 310px;
+        margin: 5px;
+        padding: 12px;
+    }
+    .middle-part {
+        align-items: center;
     }
 }
