@@ -82,11 +82,9 @@ p, input, label, h1, h2, h3, span, a {
     height: 45px;
     object-fit: cover;
     border-radius: 12px;
-    transition: all ease .2s;
 }
 .superior-elements img:hover {
     cursor: pointer;
-    transform: translateY(-4px);
 }
 .superior-elements .home-welcome {
     position: absolute;
@@ -106,11 +104,11 @@ p, input, label, h1, h2, h3, span, a {
 .middle-part {
     display: flex;
     justify-content: center;
+    align-self: center;
     flex-direction: column;
     flex-wrap: wrap;
     position: absolute;
     top: 140px;
-    padding: 8% 12%;
     padding-bottom: 100px;
     width: 100%;
 }
@@ -214,5 +212,16 @@ p, input, label, h1, h2, h3, span, a {
     .middle-part {
         display: flex;
         flex-direction: row;
+    }
+}
+
+@media (max-width: 495px) {
+    .middle-part .card {
+        max-width: 310px;
+        margin: 5px;
+        padding: 12px;
+    }
+    .middle-part {
+        align-items: center;
     }
 }

@@ -12,9 +12,9 @@ if (isset($_SESSION['idUser'])) {
             $haveProfilePic = false;
         }
 
-        $user->setFullName($_POST['name']);
-        $user->setEmail($_POST['email']);
-        $user->setCellphone($_POST['cellphone']);
+        $user->setFullName(trim($_POST['name']));
+        $user->setEmail(trim($_POST['email']));
+        $user->setCellphone(trim($_POST['cellphone']));
         $user->setCity($_POST['city']);
         
         if ($haveProfilePic) {

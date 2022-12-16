@@ -10,11 +10,11 @@ if (isset($_POST["button"])) {
     
     $user = new User();
     $user->constructorCreate(
-        $_POST["email"],
-        $_POST["cellphone"],
-        $_POST["fullname"],
+        trim($_POST["email"]),
+        trim($_POST["cellphone"]),
+        trim($_POST["fullname"]),
         $_POST["password"],
-        $_POST["city"]
+        trim($_POST["city"])
     );
     $user->setProfilePic($_FILES);
     $user->save();

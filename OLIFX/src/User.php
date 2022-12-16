@@ -94,6 +94,7 @@ class User implements  ActiveRecord
     {
         $connection = new MySQL();
         $directory = __DIR__ . "/../database/users/";
+        $extension = "";
 
         if ($this->getProfilePic()["profilepic"]["name"] != "default.png") {
             $file_name = $this->profilePic['profilepic']['name'];
@@ -112,9 +113,10 @@ class User implements  ActiveRecord
         }
         
         if (isset($this->idUser)) {
-            if (!isset($this->profilePic)) {
+            if (!isset($this->profilePic) || $extension == "") {
                 $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}' WHERE idUser = {$this->idUser}";
             } else {
+                // Deleta a imagem antiga do usuário para não ter duplicação de arquivos.
                 // Deleta a imagem antiga do usuário para não ter duplicação de arquivos.
                 $queryGetProfilePic = "SELECT profilePic FROM user WHERE idUser = {$this->idUser}";
                 $resQuery = $connection->query($queryGetProfilePic);
