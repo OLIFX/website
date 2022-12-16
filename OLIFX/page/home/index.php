@@ -8,10 +8,11 @@ if (!isset($_SESSION["idUser"])) {
     header("location: ../login");
 }
 
+User::refreshSession();
 $products = Product::findall();
+
 $directory = "../../database/users/";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +21,15 @@ $directory = "../../database/users/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
     <title>OLIFX | Home</title>
 </head>
 <body>
     <div class="container">
         <div class="superior-part">
             <div class="superior-elements">
-                <input type="text" class="search" placeholder="Search something...">
+                <form action="">
+                    <input name="s" type="text" class="search" placeholder="Search something...">    
+                </form>
                 
                 <div class="user-area">
                     <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">

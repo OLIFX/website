@@ -22,7 +22,7 @@ p, input, label, h1, h2, h3, span, a {
     align-items: center;
 }
 .dropdown {
-    display: flex;
+    display: none;
     flex-direction: column;
     row-gap: 12px;
     padding: 21px;
@@ -32,10 +32,18 @@ p, input, label, h1, h2, h3, span, a {
     right: 60px;
     background-color: #fff;
     z-index: 4;
+    transition: all 0.4s ease-out;
 }
 .dropdown a {
     color: #363636;
-    opacity: 0.95;
+    opacity: 0.75;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+}
+.dropdown a:hover {
+    opacity: 1;
+    color: #000;
+    text-decoration: underline;
 }
 .superior-part {
     width: 100%;
@@ -52,7 +60,12 @@ p, input, label, h1, h2, h3, span, a {
     padding: 40px 30px;
     padding-bottom: 60px;
 }
-.superior-elements .search {
+.superior-elements form {
+    width: 100%;
+    min-width: 140px;
+    max-height: 50px;
+}
+.superior-elements form .search {
     border: 1px solid #ffffff22;
     background-color: #ffffff22;
     border-radius: 12px;
@@ -61,6 +74,7 @@ p, input, label, h1, h2, h3, span, a {
     width: 100%;
     min-width: 140px;
     max-height: 50px;
+    height: 100%;
 }
 .superior-elements img {
     border: 1px solid #ffffff22;
@@ -88,48 +102,6 @@ p, input, label, h1, h2, h3, span, a {
     align-items: flex-end;
     gap: 10px;
     justify-content: space-between;
-}
-.superior-part .dropdown-menu  {
-    background-color: #ffffff;
-    height: fit-content;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 10px;
-    flex-direction: column;
-}
-.dropdown-title {
-    font-size: var(--font-m);
-}
-.dropdown-option {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-.dropdown-option a {
-    text-decoration: none;
-    color: var(--primary-text-color);
-    font-size: var(--font-pp);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all ease .2s;
-}
-.dropdown-option img {
-    height: 25px;
-    width: 25px;
-}
-.dropdown-option h2 {
-    font-size: var(--font-pp);
-}
-.dropdown-option a:hover {
-    cursor: pointer;
-    transform: scale(1.1);
 }
 .middle-part {
     display: flex;
