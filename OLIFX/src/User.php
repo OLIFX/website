@@ -94,29 +94,44 @@ class User implements  ActiveRecord
     {
         $connection = new MySQL();
         $directory = __DIR__ . "/../database/users/";
+        $extension = "";
 
-        if ($this->getProfilePic()["profilepic"]["name"] != "default.jpg") {
+        if ($this->getProfilePic()["profilepic"]["name"] != "default.png") {
             $file_name = $this->profilePic['profilepic']['name'];
             $info_name = explode(".", $file_name);
             $extension = end($info_name);
 
             $this->profilePic = uniqid().".".$extension;
-            
+
             if (!move_uploaded_file($_FILES["profilepic"]["tmp_name"], $directory . $this->profilePic)) {
-                die("Upload failed.");
+                echo "<script>console.error(\"Image upload failed.\")</script>";
+            }
+        } elseif ($this->getProfilePic()["profilepic"]["name"] == "default.png") {
+            $this->profilePic = "default.png";
+        } else {
+            $this->profilePic = null;
+        }
+        
+        if (isset($this->idUser)) {
+            if (!isset($this->profilePic) || $extension == "") {
+                $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}' WHERE idUser = {$this->idUser}";
+            } else {
+                // Deleta a imagem antiga do usuário para não ter duplicação de arquivos.
+                // Deleta a imagem antiga do usuário para não ter duplicação de arquivos.
+                $queryGetProfilePic = "SELECT profilePic FROM user WHERE idUser = {$this->idUser}";
+                $resQuery = $connection->query($queryGetProfilePic);
+                $pic = $resQuery[0]['profilePic'];
+                unlink($directory . $pic);
+                
+                $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}', profilePic = '{$this->profilePic}' WHERE idUser = {$this->idUser}";
             }
         }
+
         else {
-            $this->profilePic = "default.jpg";
-        }
-        
-        
-        if(isset($this->idUser)){
-            $sql = "UPDATE user SET email = '{$this->email}', fullName = '{$this->fullName}', cellphone = '{$this->cellphone}', city = '{$this->city}', profilePic = '{$this->profilePic}' WHERE idUser = {$this->idUser}";
-        }else{
             $this->password = password_hash($this->password,PASSWORD_BCRYPT);
             $sql = "INSERT INTO user (email,password,fullName, cellphone, city, profilePic) VALUES ('{$this->email}','{$this->password}','{$this->fullName}','{$this->cellphone}','{$this->city}','$this->profilePic')";
         }
+        
         return $connection->execute($sql);
     }
 
@@ -195,5 +210,17 @@ class User implements  ActiveRecord
         } else {
             return false;
         }
+    }
+    
+    public static function refreshSession(): void
+    {
+        $connection = new MySQL();
+        $sql = "SELECT idUser, email, fullName, profilePic FROM user WHERE idUser = {$_SESSION['idUser']}";
+        $res = $connection->query($sql);
+
+        $_SESSION['idUser'] = $res[0]['idUser'];
+        $_SESSION['email'] = $res[0]['email'];
+        $_SESSION['fullName'] = $res[0]['fullName'];
+        $_SESSION['profilePic'] = $res[0]['profilePic'];
     }
 }

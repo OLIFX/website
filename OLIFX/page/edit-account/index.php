@@ -7,20 +7,24 @@ session_start();
 if (isset($_SESSION['idUser'])) {
     $user = User::find($_SESSION['idUser']);
     if (isset($_POST["button"])) {
-        if ($_FILES["profilepic"]["name"] == "") $_FILES["profilepic"]["name"] = "default.jpg";
+        $haveProfilePic = true;
+        if ($_FILES["profilepic"]["name"] == "") {
+            $haveProfilePic = false;
+        }
 
-        $user->setFullName($_POST['name']);
-        $user->setEmail($_POST['email']);
-        $user->setCellphone($_POST['cellphone']);
-        $user->setCity($_POST['city']);
-        $user->setProfilePic($_FILES);
+        $user->setFullName(trim($_POST['name']));
+        $user->setEmail(trim($_POST['email']));
+        $user->setCellphone(trim($_POST['cellphone']));
+        $user->setCity(trim($_POST['city']));
+        
+        if ($haveProfilePic) {
+            $user->setProfilePic($_FILES);
+        }
         
         if ($user->save()) {
-            // echo "<script>alert('Your profile was updated successfully!');</script>";
             header('location: ../home');
         } else {
-            // echo "<script>alert('An error occured on update your profile');</script>";
-            header('location: ./index.php');
+             echo "<script>alert('An error occured on update your profile');</script>";
         };
     }
 } else {
