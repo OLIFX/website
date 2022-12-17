@@ -98,6 +98,23 @@ class Product implements  ActiveRecord
         return $p;
     }
 
+    public static function findByTitle($title): array {
+        $connection = new MySQL();
+        $sql = "SELECT * FROM product WHERE title LIKE '{$title}'";
+        $results = $connection->query($sql);
+
+        $products = array();
+        foreach($results as $result){
+            $p = new Product($result['title'],$result['description'],$result['price']);
+            $p->setIdUser($result['idUser']);
+            $p->setDate_time($result['date_time']);
+            $p->setIdProduct($result['idProduct']);
+            $products[] = $p;
+        }
+        
+        return $products;
+    }
+
     public static function findall():array{
         $connection = new MySQL();
         $sql = "SELECT * FROM product";
