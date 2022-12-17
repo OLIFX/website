@@ -3,8 +3,13 @@ OLIFX/vendor/
 
 */Database/users/*.jpg
 */Database/users/*.png
+*/Database/users/*.gif
+*/Database/users/*.webp
+
 */Database/media/*.jpg
 */Database/media/*.png
+*/Database/media/*.gif
+*/Database/media/*.webp
 
 *.idea/
 .htaccess
