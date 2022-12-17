@@ -72,11 +72,14 @@ $directory = "../../database/users/";
             <div class="product-infos">
                 <p class="product-info-camp">
                     <span class="info-camp-title">Price: </span>
-                    <span class="info-camp-data"><?php echo "R$".$product->getPrice() ?></span>
+                    <span class="info-camp-data"><?php echo "R$".number_format($product->getPrice(), 2, ',', '.') ?></span>
                 </p>
                 <p class="product-info-camp">
                     <span class="info-camp-title">Posted data: </span>
-                    <span class="info-camp-data"><?php echo $product->getDate_time() ?></span>
+                    <span class="info-camp-data"><?php  
+                    $date = date_create($product->getDate_time());
+                    echo date_format($date, 'd/m/Y');  
+                    ?></span>
                 </p>
                 <p class="product-info-camp">
                     <span class="info-camp-title">Description: </span>
