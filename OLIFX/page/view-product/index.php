@@ -113,7 +113,7 @@ $directory = "../../database/users/";
                 </div>
             </a>
 
-            <a href="#">
+            <a href="../favorites">
                 <div class="anchor">
                     <img src="../../assets/icons/star-o.png" alt="Home" class="home">
                 </div>
