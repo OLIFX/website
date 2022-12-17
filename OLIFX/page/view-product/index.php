@@ -1,10 +1,34 @@
 <?php
 require_once "../../settings/config.php";
 session_start();
-if (!isset($_SESSION["idUser"])) {
+if (!$_SESSION["idUser"]) {
     header("location: ../login");
 }
-$product = Product::find($_GET['idProduct']);
+
+if (!isset($_GET['id'])) {
+    header("location: ../home");
+}
+
+$pageOfFavoriteProduct = false;
+
+if (isset($_POST["idProduct"])) {
+    $fav = new Favorite();
+    
+    $fav->setIdUser($_SESSION["idUser"]);
+    $fav->setIdProduct($_POST["idProduct"]);
+    
+    $fav->save();
+    $pageOfFavoriteProduct = true;
+}
+
+try {
+    $product = Product::find($_GET['id']);
+} catch (TypeError $error) {
+    header("location: ../home");
+}
+
+$pageOfFavoriteProduct = $product->verifyIfUserHasFavorite($_SESSION["idUser"]);
+
 $directory = "../../database/users/";
 ?>
 <!DOCTYPE html>
@@ -13,11 +37,23 @@ $directory = "../../database/users/";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
+    <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="style.css">
     <title>View Product | <?php echo $product->getTitle() ?> </title>
 </head>
 <body>
     <div class="view-product-container">
+        <div class="user-area">
+            <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+        </div>
+
+        <div class="dropdown">
+            <a href="../edit-account/">Edit your account</a>
+            <a href="../edit-account/">Your products</a>
+            <a href="../login/logout.php">Log out</a>
+        </div>
+        
         <div class="product-datas">
             <div class="product-title">
                 <h1><?php echo $product->getTitle() ?></h1>
@@ -48,10 +84,50 @@ $directory = "../../database/users/";
                 </p>
             </div>
             <div class="buttons-area">
-                <input type="submit" value="Favourite" class="favourite-button">
-                <input type="submit" value="Contact" class="contact-button">
+                <?php 
+                    if ($pageOfFavoriteProduct) {
+                        echo "<form method=\"post\" action='undo.php?id={$id}'>";
+                        $fav = "Unfavorite this";
+                        $classFav = "favorited";
+                    } else {
+                        echo "<form method=\"post\" action='?id={$id}'>";
+                        $fav = "Favorite this";
+                        $classFav = "";
+                    }
+                    echo "<input type='number' name='idProduct' value='{$id}' hidden>";
+                    echo "<input type='submit' name='favorite' value='{$fav}' class='favorite-button $classFav'>";
+                ?>
+                </form>
+                
+                <!-- Link para a API do WhatsApp com o número -->
+                <a href="#" class="contact-button">Contact via WhatsApp</a>
             </div>
         </div>
+
+
+        <div class="bottom-navigation">
+
+            <a href="../home">
+                <div class="anchor">
+                    <img src="../../assets/icons/home-o.png" alt="Home" class="home">
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="anchor">
+                    <img src="../../assets/icons/star-o.png" alt="Home" class="home">
+                </div>
+            </a>
+
+            <a href="../post">
+                <div class="anchor">
+                    <img src="../../assets/icons/new-o.png" alt="Home" class="home">
+                </div>
+            </a>
+        </div>
+        
     </div>
+
+    <script src="../home/main.js"></script>
 </body>
 </html>

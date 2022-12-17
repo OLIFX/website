@@ -5,7 +5,6 @@ class Product implements  ActiveRecord
     private int $idProduct;
     private int $idUser;
     private string $date_time;
-    
 
     public function __construct(
         private string $title,
@@ -133,6 +132,7 @@ class Product implements  ActiveRecord
         
         return $products;
     }
+    
     public static function countProducts() : int
     {
         $connection = new MySQL();
@@ -140,8 +140,14 @@ class Product implements  ActiveRecord
         $result = $connection->query($sql);
         $c = $result[0]['numero'];
         return $c;
-        
-        
+    }
+    
+    public function verifyIfUserHasFavorite($idUser): bool
+    {
+        $connection = new MySQL();
+        $sql = "select count(1) as count from favorite where idUser=$idUser AND idProduct=$this->idProduct;";
+        $res = $connection->query($sql);
+        return $res[0]["count"];
     }
 }
 

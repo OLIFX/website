@@ -71,7 +71,7 @@ $directory = "../../database/users/";
                         echo "<div class=\"card\">";
                         echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
                     }
-                    echo "<a href=\"../view-product/index.php?idProduct={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
+                    echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
                     
                     $publisher = User::findUserFullNameByIdUser($product->getIdUser());
@@ -95,7 +95,7 @@ $directory = "../../database/users/";
                 </div>
             </a>
 
-            <a href="#">
+            <a href="../favorites">
                 <div class="anchor">
                     <img src="../../assets/icons/star-o.png" alt="Home" class="home">
                 </div>

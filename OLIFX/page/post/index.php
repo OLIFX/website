@@ -65,7 +65,7 @@ if (isset($_POST["button"])) {
             </div>
         </a>
 
-        <a href="#">
+        <a href="../favorites">
             <div class="anchor">
                 <img src="../../assets/icons/star-o.png" alt="Favorites" class="favorite">
             </div>
