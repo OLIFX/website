@@ -9,7 +9,7 @@ if (!isset($_SESSION["idUser"])) {
 
 if (isset($_POST["button"])) {
     $connection = new MySQL();
-    $sql = "SELECT COUNT(*) as numero FROM product";
+    $sql = "SELECT COUNT(*) + 1 as numero FROM product";
     $result = $connection->query($sql);
     $c = $result[0]['numero'];
     
@@ -32,6 +32,7 @@ if (isset($_POST["button"])) {
     header("location: ../home");
 }
 
+$directory = "../../database/users/";
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +52,16 @@ if (isset($_POST["button"])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body>
+    <div class="user-area">
+        <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+    </div>
+    
+    <div class="dropdown" style="display: none">
+        <a href="../edit-account">Edit your account</a>
+        <a href="../yours">Your products</a>
+        <a href="../login/logout.php">Log out</a>
+    </div>
+    
     <section class="form">
         <form action="index.php" method="post" enctype="multipart/form-data">
             <h1 class="title-in-box">Post a product</h1>
@@ -96,5 +107,7 @@ if (isset($_POST["button"])) {
             </div>
         </a>
     </div>
+    
+    <script src="../home/main.js"></script>
 </body>
 </html>

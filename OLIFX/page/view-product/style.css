@@ -110,9 +110,11 @@ input.favorite-button.favorited {
     height: 45px;
     object-fit: cover;
     border-radius: 12px;
+    transition: 0.2s;
 }
 .user-area img:hover {
     cursor: pointer;
+    scale: 1.2;
 }
 .user-area {
     position: absolute;

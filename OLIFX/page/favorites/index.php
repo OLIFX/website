@@ -18,7 +18,7 @@ $directory = "../../database/users/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
-    <title>OLIFX | Home</title>
+    <title>OLIFX | Favorites</title>
 </head>
 <body>
 <div class="container">
@@ -32,9 +32,9 @@ $directory = "../../database/users/";
                 <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
             </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="display: none">
                 <a href="../edit-account/">Edit your account</a>
-                <a href="../edit-account/">Your products</a>
+                <a href="../yours">Your products</a>
                 <a href="../login/logout.php">Log out</a>
             </div>
 
@@ -103,6 +103,6 @@ $directory = "../../database/users/";
     </div>
 </div>
 
-<script src="main.js"></script>
+<script src="../home/main.js"></script>
 </body>
 </html>

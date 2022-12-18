@@ -31,7 +31,7 @@ p, input, label, h1, h2, h3, span, a {
     top: 80px;
     right: 60px;
     background-color: #fff;
-    z-index: 4;
+    z-index: 1;
     transition: all 0.4s ease-out;
 }
 .dropdown a {
@@ -82,9 +82,12 @@ p, input, label, h1, h2, h3, span, a {
     height: 45px;
     object-fit: cover;
     border-radius: 12px;
+    transition: 0.15s;
+    z-index: 2;
 }
 .superior-elements img:hover {
     cursor: pointer;
+    scale: 1.2;
 }
 .superior-elements .home-welcome {
     position: absolute;
@@ -188,6 +191,7 @@ p, input, label, h1, h2, h3, span, a {
     padding: 20px 10%;
     width: 100%;
     background-color: #fff;
+    border-top: 1px solid #ff9600;
 }
 .bottom-navigation .anchor {
     display: flex;

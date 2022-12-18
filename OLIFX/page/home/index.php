@@ -9,7 +9,13 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 User::refreshSession();
-$products = Product::findall();
+
+if (isset($_GET["search"])) {
+    $search = '%'.trim($_GET['search']).'%';
+    $products = Product::findByTitle($search);
+} else {
+    $products = Product::findall();
+}
 
 $directory = "../../database/users/";
 ?>
@@ -27,7 +33,7 @@ $directory = "../../database/users/";
     <div class="container">
         <div class="superior-part">
             <div class="superior-elements">
-                <form action="./search.php" method="GET">
+                <form action="../home" method="GET">
                     <input name="search" type="text" class="search" placeholder="Search something...">    
                 </form>
                 
@@ -35,9 +41,9 @@ $directory = "../../database/users/";
                     <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
                 </div>
                 
-                <div class="dropdown">
-                    <a href="../edit-account/">Edit your account</a>
-                    <a href="../edit-account/">Your products</a>
+                <div class="dropdown" style="display: none;">
+                    <a href="../edit-account">Edit your account</a>
+                    <a href="../yours">Your products</a>
                     <a href="../login/logout.php">Log out</a>
                 </div>
                 
@@ -47,41 +53,39 @@ $directory = "../../database/users/";
 
         <div class="middle-part">
             <?php
-                if (count($products) <= 0) {
-                    echo "<div class=\"card\">";
-                    echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                if (count($products) > 0) {
+                    foreach($products as $product) {
+                        $id = $product->getIdProduct();
+                        if(Media::existeMediaProduto($id)){
+                            $img = Media::findMediaByProduct($id);
+                            echo "<div class=\"card\">";
+                            echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
+                        }else{
 
-                    echo "<p class=\"card-title\">This is an example of a title... Some stuff here</p>";
-                    echo "<p class=\"card-description\">This is an example of a description... Lorem ipsum dolor sit amet consectetur adipisicing elit</p>";
+                            echo "<div class=\"card\">";
+                            echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                        }
+                        echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
+                        echo "<p class=\"card-description\">{$product->getDescription()}</p>";
 
-                    echo "<p class='card-price'>R$ 00,00</p>";
+                        $publisher = User::findUserFullNameByIdUser($product->getIdUser());
+                        $datetime = date_create($product->getDate_time());
+                        $dateFormatted = date_format($datetime, "m/d/Y");
+                        echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
 
-                    echo "</div>";
-                }
+                        $value = number_format($product->getPrice(), 2, ",", ".");
+                        echo "<p class='card-price'>R$ {$value}</p>";
 
-                foreach($products as $product) {
-                    
-                    $id = $product->getIdProduct();
-                    if(Media::existeMediaProduto($id)){
-                        $img = Media::findMediaByProduct($id);
-                        echo "<div class=\"card\">";
-                        echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
-                    }else{
-                        
-                        echo "<div class=\"card\">";
-                        echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                        echo "</div>";
                     }
-                    echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
-                    echo "<p class=\"card-description\">{$product->getDescription()}</p>";
-                    
-                    $publisher = User::findUserFullNameByIdUser($product->getIdUser());
-                    $datetime = date_create($product->getDate_time());
-                    $dateFormatted = date_format($datetime, "m/d/Y");
-                    echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
-                    
-                    $value = number_format($product->getPrice(), 2, ",", ".");
-                    echo "<p class='card-price'>R$ {$value}</p>";
-
+                } else {
+                    echo "<div class=\"card\">";
+                    if ($_GET["search"]) {
+                        $param = trim($_GET["search"]);
+                        echo "<p class=\"card-title\">Nothing found with the name <em>{$param}</em></p>";
+                    } else {
+                        echo "<p class=\"card-title\">Nothing has been posted yet...</p>";
+                    }
                     echo "</div>";
                 }
             ?>

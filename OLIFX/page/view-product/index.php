@@ -48,9 +48,9 @@ $directory = "../../database/users/";
             <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
         </div>
 
-        <div class="dropdown">
-            <a href="../edit-account/">Edit your account</a>
-            <a href="../edit-account/">Your products</a>
+        <div class="dropdown" style="display: none">
+            <a href="../edit-account">Edit your account</a>
+            <a href="../yours">Your products</a>
             <a href="../login/logout.php">Log out</a>
         </div>
         

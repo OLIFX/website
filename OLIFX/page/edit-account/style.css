@@ -54,6 +54,27 @@ input:focus {
     border: 1px solid #ff9600;
     background-color: white;
 }
+.user-area img {
+    border: 1px solid #ffffff22;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.user-area img:hover {
+    cursor: pointer;
+    scale: 1.2;
+}
+.user-area {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.dropdown {
+    top: 55px;
+    right: 55px;
+}
 input[type=submit] {
     margin-top: 1rem;
     font-size: 1.1rem;

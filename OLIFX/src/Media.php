@@ -48,7 +48,7 @@ class Media implements ActiveRecord
         $connection = new MySQL();
         $directory = __DIR__ . "/../database/media/";
 
-        if ($this->getPath() != "default.jpg") {
+        if ($this->getPath() != "default.png") {
             $file_name = $this->path['media']['name'];
             $info_name = explode(".", $file_name);
             $extension = end($info_name);
@@ -59,7 +59,7 @@ class Media implements ActiveRecord
                 die("Upload failed.");
             }
         } else {
-            $this->path = "default.jpg";
+            $this->path = "default.png";
         }
         if (isset($this->idMedia)) {
             $sql = "UPDATE media SET idProduct = '{$this->idProduct}' ,path = '{$this->path}' WHERE idMedia = {$this->idMedia}";
@@ -74,7 +74,8 @@ class Media implements ActiveRecord
     {
         $connection = new MySQL();
         $sql = "DELETE FROM media WHERE idMedia = {$this->idMedia}";
-        unlink($this->path);
+        $directory = __DIR__ . "/../database/media/";
+        unlink($directory . $this->path);
 
         return $connection->execute($sql);
     }
