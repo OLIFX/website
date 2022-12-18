@@ -12,6 +12,15 @@ User::refreshSession();
 $products = Product::findall();
 
 $directory = "../../database/users/";
+
+$lang = "en-us";
+if (isset($_GET["language"]) && $_GET["language"] == "pt-br") {
+  $lang = "pt-br";
+}
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +37,7 @@ $directory = "../../database/users/";
         <div class="superior-part">
             <div class="superior-elements">
                 <form action="./search.php" method="GET">
-                    <input name="search" type="text" class="search" placeholder="Search something...">    
+                    <input name="search" type="text" class="search" placeholder="<?php echo $content['homepage&Favourites']['search'] ?>">    
                 </form>
 
                 <div class="dropdowns-area">
@@ -47,13 +56,13 @@ $directory = "../../database/users/";
                     
     
                     <div class="dropdown">
-                        <a href="../edit-account/">Edit your account</a>
-                        <a href="../edit-account/">Your products</a>
-                        <a href="../login/logout.php">Log out</a>
+                        <a href="../edit-account/"> <?php echo $content['homepage&Favourites']['dropdown']['editAccount'] ?></a>
+                        <a href="../edit-account/"><?php echo $content['homepage&Favourites']['dropdown']['yourProducts'] ?></a>
+                        <a href="../login/logout.php"><?php echo $content['homepage&Favourites']['dropdown']['logout'] ?></a>
                     </div>
                     
     
-                    <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
+                    <span class="home-welcome"><?php echo $content['homepage&Favourites']['welcome'] ?> <?php echo $_SESSION["fullName"]?>!</span>
                 </div>
             </div>
         </div>
@@ -90,7 +99,7 @@ $directory = "../../database/users/";
                     $publisher = User::findUserFullNameByIdUser($product->getIdUser());
                     $datetime = date_create($product->getDate_time());
                     $dateFormatted = date_format($datetime, "m/d/Y");
-                    echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
+                    echo "<p class=\"card-published\"><em>{$content['homepage&Favourites']['card']['postedBy']}</em> <strong>{$publisher}</strong> <em>{$content['homepage&Favourites']['card']['midPart']}</em> {$dateFormatted}</p>";
                     
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";
