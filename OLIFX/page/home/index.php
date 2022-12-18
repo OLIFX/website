@@ -30,18 +30,31 @@ $directory = "../../database/users/";
                 <form action="./search.php" method="GET">
                     <input name="search" type="text" class="search" placeholder="Search something...">    
                 </form>
-                
-                <div class="user-area">
-                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+
+                <div class="dropdowns-area">
+                    
+                    <div class="languages-area">
+                        <img style="border: none;" src="./world-icon.png" alt="world-icon">
+                            <div class="language-dropdown">
+                                <a href="./index.php?language=pt-br">pt-br</a>
+                                <a href="./index.php?language=en-us">en-us</a>
+                            </div>
+                    </div>
+                    
+                    <div class="user-area">
+                        <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+                    </div>
+                    
+    
+                    <div class="dropdown">
+                        <a href="../edit-account/">Edit your account</a>
+                        <a href="../edit-account/">Your products</a>
+                        <a href="../login/logout.php">Log out</a>
+                    </div>
+                    
+    
+                    <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
                 </div>
-                
-                <div class="dropdown">
-                    <a href="../edit-account/">Edit your account</a>
-                    <a href="../edit-account/">Your products</a>
-                    <a href="../login/logout.php">Log out</a>
-                </div>
-                
-                <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
         </div>
 
