@@ -101,9 +101,16 @@ $directory = "../../database/users/";
                     echo "<input type='submit' name='favorite' value='{$fav}' class='favorite-button $classFav'>";
                 ?>
                 </form>
+                <?php
                 
-                <!-- Link para a API do WhatsApp com o número -->
-                <a href="#" class="contact-button">Contact via WhatsApp</a>
+                $link = Product::whatsApp($product->getIdUser());
+                echo "<a href='{$link}' class='contact-button'>Contact via WhatsApp</a>";
+                
+                
+                ?>
+                
+                
+                
             </div>
         </div>
 
