@@ -30,6 +30,12 @@ try {
 $pageOfFavoriteProduct = $product->verifyIfUserHasFavorite($_SESSION["idUser"]);
 
 $directory = "../../database/users/";
+
+$lang = $_SESSION['language'];
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +46,7 @@ $directory = "../../database/users/";
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="style.css">
-    <title>View Product | <?php echo $product->getTitle() ?> </title>
+    <title><?php echo $content['productPage']['viewProduct'] ?> | <?php echo $product->getTitle() ?> </title>
 </head>
 <body>
     <div class="view-product-container">
@@ -49,9 +55,9 @@ $directory = "../../database/users/";
         </div>
 
         <div class="dropdown">
-            <a href="../edit-account/">Edit your account</a>
-            <a href="../edit-account/">Your products</a>
-            <a href="../login/logout.php">Log out</a>
+        <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
+        <a href="../edit-account/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+        <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
         </div>
         
         <div class="product-datas">
@@ -71,18 +77,18 @@ $directory = "../../database/users/";
             </div>
             <div class="product-infos">
                 <p class="product-info-camp">
-                    <span class="info-camp-title">Price: </span>
+                    <span class="info-camp-title"><?php echo $content['productPage']['price'] ?>: </span>
                     <span class="info-camp-data"><?php echo "R$".number_format($product->getPrice(), 2, ',', '.') ?></span>
                 </p>
                 <p class="product-info-camp">
-                    <span class="info-camp-title">Posted data: </span>
+                    <span class="info-camp-title"><?php echo $content['productPage']['data'] ?>: </span>
                     <span class="info-camp-data"><?php  
                     $date = date_create($product->getDate_time());
                     echo date_format($date, 'd/m/Y');  
                     ?></span>
                 </p>
                 <p class="product-info-camp">
-                    <span class="info-camp-title">Description: </span>
+                    <span class="info-camp-title"><?php echo $content['productPage']['description'] ?>: </span>
                     <span class="info-camp-data"><?php echo $product->getDescription() ?></span>
                 </p>
             </div>
@@ -90,11 +96,11 @@ $directory = "../../database/users/";
                 <?php 
                     if ($pageOfFavoriteProduct) {
                         echo "<form method=\"post\" action='undo.php?id={$id}'>";
-                        $fav = "Unfavorite this";
+                        $fav = "{$content['productPage']['unfavorite']}";
                         $classFav = "favorited";
                     } else {
                         echo "<form method=\"post\" action='?id={$id}'>";
-                        $fav = "Favorite this";
+                        $fav = "{$content['productPage']['favorite']}";
                         $classFav = "";
                     }
                     echo "<input type='number' name='idProduct' value='{$id}' hidden>";
@@ -104,7 +110,7 @@ $directory = "../../database/users/";
                 <?php
                 
                 $link = Product::whatsApp($product->getIdUser());
-                echo "<a href='{$link}' class='contact-button'>Contact via WhatsApp</a>";
+                echo "<a href='{$link}' class='contact-button'>$content['productPage']['contact']</a>";
                 
                 
                 ?>

@@ -45,6 +45,30 @@ p, input, label, h1, h2, h3, span, a {
     color: #000;
     text-decoration: underline;
 }
+
+
+.dropdowns-area {
+    display: flex;
+    gap: 100px;
+}
+
+@media (max-width: 495px) {
+    .dropdowns-area {
+        flex-direction: column-reverse;
+        gap: 50px;
+    }
+    .language-dropdown {
+        top: 170px;
+        right: 15px;
+    }
+}
+
+.languages-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .superior-part {
     width: 100%;
     height: 400px;
