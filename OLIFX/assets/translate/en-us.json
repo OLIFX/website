@@ -1,0 +1,57 @@
+{
+    "language": "en-us",
+    "index": {
+      "title": "Welcome to OLIFX",
+      "subtitle": "Platform to advertise and sell products among the IFRS Campus Feliz community.",
+      "button": "Enter the app"
+    },
+    "login": {
+        "password": "Password",
+        "dontHaveAccount": "Don't have an account yet? Sign Up"
+    },
+    "dontHaveAccountPage": {
+        "title": "Create Account",
+        "fullName": "Full name",
+        "telephone": "Phone number",
+        "password": "Password",
+        "city": "City",
+        "profilePic": "Profile picture",
+        "crate": "Create"
+    },
+    "homepage&Favourites": {
+        "search": "Search something...",
+        "welcome": "Welcome,",
+        "card": {
+            "postedBy": "Posted by",
+            "midPart": "at"
+        },
+        "dropdown": {
+            "editAccount": "Edit your account",
+            "yourProducts": "Your products",
+            "logout": "Log out"
+        }
+    },
+    "editAccount": {
+        "title": "Edit your account",
+        "fullName": "Full name",
+        "telephone": "Phone number",
+        "city": "City",
+        "profilePic": "Profile picture",
+        "edit": "Edit"
+    },
+    "createProduct": {
+        "postAProduct": "Post a product",
+        "title": "Title",
+        "description": "Description",
+        "price": "Price",
+        "image": "Image",
+        "postIt": "Post it"
+    },
+    "productPage": {
+        "price": "Price",
+        "data": "Posted data",
+        "description": "Description",
+        "favourite": "Favourite this",
+        "contact": "Contact via WhatsApp"
+    }
+  }

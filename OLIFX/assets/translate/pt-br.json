@@ -1,0 +1,57 @@
+{
+    "language": "pt-br",
+    "index": {
+      "title": "Bem-vindo à OLIFX",
+      "subtitle": "Plataforma de divulgação e venda de produtos junto à comunidade IFRS Campus Feliz.",
+      "button": "Entre na plataforma"
+    },
+    "login": {
+        "password": "Senha",
+        "dontHaveAccount": "Ainda não possui uma conta? Crie aqui"
+    },
+    "dontHaveAccountPage": {
+        "title": "Criar conta",
+        "fullName": "Nome completo",
+        "telephone": "Celular",
+        "password": "Senha",
+        "city": "Cidade",
+        "profilePic": "Foto de perfil",
+        "crate": "Criar"
+    },
+    "homepage&Favourites": {
+        "search": "Pesquise por um produto...",
+        "welcome": "Bem-vindo,",
+        "card": {
+            "postedBy": "Postado por",
+            "midPart": "dia"
+        },
+        "dropdown": {
+            "editAccount": "Edite sua conta",
+            "yourProducts": "Seus produtos",
+            "logout": "Sair"
+        }
+    },
+    "editAccount": {
+        "title": "Edite sua conta",
+        "fullName": "Nome completo",
+        "telephone": "Celular",
+        "city": "Cidade",
+        "profilePic": "Foto de perfil",
+        "edit": "Editar"
+    },
+    "createProduct": {
+        "postAProduct": "Anuncie um produto",
+        "title": "Título",
+        "description": "Descrição",
+        "price": "Preço",
+        "image": "Imagem",
+        "postIt": "Postar"
+    },
+    "productPage": {
+        "price": "Preço",
+        "data": "Postado dia",
+        "description": "Descrição",
+        "favourite": "Adicionar aos favoritos",
+        "contact": "Entrar em contato via WhatsApp"
+    }
+  }
