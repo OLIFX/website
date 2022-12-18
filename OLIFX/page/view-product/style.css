@@ -1,0 +1,131 @@
+@import "../../settings/theme.css";
+@import "../../settings/global.css";
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #153843, #141923);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.view-product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown {
+    top: 55px;
+    right: 55px;
+}
+.product-datas {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    padding: 0.8rem;
+    border-radius: 20px;
+    max-width: 500px;
+    font-family: 'Poppins', sans-serif;
+}
+.product-title h1 {
+    font-size: var(--font-gg);
+    text-align: center;
+}
+.product-image {
+    width: 100%;
+    padding: 10px;
+}
+@media (max-width: 425px) {
+    .product-title h1 {
+        font-size: var(--font-mm);
+    }
+}
+@media (max-width: 768px) {
+    .product-title h1 {
+        font-size: var(--font-g);
+    }
+}
+.product-image img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: scale-down;
+    border-radius: 10px;
+}
+.product-infos {
+
+}
+.product-info-camp {
+    width: 80%;
+    margin: auto;
+}
+.info-camp-title {
+    font-weight: bold;
+}
+.info-camp-data {
+
+}
+.buttons-area {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+input[type=submit], .contact-button {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    padding: 6px;
+    border: none;
+    margin-top: 1rem;
+    background-color: #ff9600;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px #ff95008a;
+    transition: all ease .2s;
+}
+.contact-button {
+    text-decoration: none;
+    background-color: #154341;
+    box-shadow: 0px 4px 12px #1543418a;
+}
+input[type=submit]:hover, .contact-button:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+input.favorite-button.favorited {
+    font-weight: bold;
+    border: 2px solid #ff9600;
+    background-color: #fff;
+    color: #ff9600;
+}
+.user-area img {
+    border: 1px solid #ffffff22;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.user-area img:hover {
+    cursor: pointer;
+}
+.user-area {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+@media (max-width: 495px) {
+    .product-datas {
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 0;
+    }
+    .buttons-area {
+        flex-direction: column;
+    }
+}

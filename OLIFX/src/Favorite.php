@@ -36,7 +36,7 @@ class Favorite implements ActiveRecord
     public function save(): bool
     {
         $connection = new MySQL();
-        $sql = "INSERT INTO favorite (idUser,idProduct,date_time) VALUES ('{$this->idUser}','{$this->idProduct}',NOW()";
+        $sql = "INSERT INTO favorite (idUser,idProduct,date_time) VALUES ({$this->idUser},{$this->idProduct},CURRENT_DATE())";
         
         return $connection->execute($sql);
     }

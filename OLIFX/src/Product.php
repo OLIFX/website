@@ -5,7 +5,6 @@ class Product implements  ActiveRecord
     private int $idProduct;
     private int $idUser;
     private string $date_time;
-    
 
     public function __construct(
         private string $title,
@@ -99,6 +98,23 @@ class Product implements  ActiveRecord
         return $p;
     }
 
+    public static function findByTitle($title): array {
+        $connection = new MySQL();
+        $sql = "SELECT * FROM product WHERE title LIKE '{$title}'";
+        $results = $connection->query($sql);
+
+        $products = array();
+        foreach($results as $result){
+            $p = new Product($result['title'],$result['description'],$result['price']);
+            $p->setIdUser($result['idUser']);
+            $p->setDate_time($result['date_time']);
+            $p->setIdProduct($result['idProduct']);
+            $products[] = $p;
+        }
+        
+        return $products;
+    }
+
     public static function findall():array{
         $connection = new MySQL();
         $sql = "SELECT * FROM product";
@@ -133,6 +149,7 @@ class Product implements  ActiveRecord
         
         return $products;
     }
+    
     public static function countProducts() : int
     {
         $connection = new MySQL();
@@ -140,8 +157,14 @@ class Product implements  ActiveRecord
         $result = $connection->query($sql);
         $c = $result[0]['numero'];
         return $c;
-        
-        
+    }
+    
+    public function verifyIfUserHasFavorite($idUser): bool
+    {
+        $connection = new MySQL();
+        $sql = "select count(1) as count from favorite where idUser=$idUser AND idProduct=$this->idProduct;";
+        $res = $connection->query($sql);
+        return $res[0]["count"];
     }
 }
 

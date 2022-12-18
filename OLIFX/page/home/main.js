@@ -1,4 +1,6 @@
 // Script that will show or hide the dropdown menu;
+document.querySelector('.dropdown').click();
+
 const userImageButton = document.querySelector(".user-area>img");
 const dropdown = document.querySelector(".dropdown");
 

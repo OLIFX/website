@@ -12,7 +12,15 @@ if (isset($_POST["button"])) {
     $sql = "SELECT COUNT(*) as numero FROM product";
     $result = $connection->query($sql);
     $c = $result[0]['numero'];
-    $product = new Product($_POST["title"], $_POST["description"], $_POST["price"]);
+    
+    // Price formatting
+    $removedDots = str_replace(".", "", trim($_POST["price"]));
+    $removedCommas = floatval(str_replace(",", ".", trim($removedDots)));
+    
+    // Description formatting
+    $formattedTextDesc = trim(str_replace("\n", "</br>", $_POST["description"]));
+    
+    $product = new Product(trim($_POST["title"]), $formattedTextDesc, $removedCommas);
     $product->setIdUser($_SESSION["idUser"]);
     
     $product->save();
@@ -29,14 +37,18 @@ if (isset($_POST["button"])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
-  <title>OLIFX | Post a product</title>
-  <link rel="stylesheet" href="../new/new.css">
-  <link rel="stylesheet" href="../home/style.css">
-  <link rel="stylesheet" href="post.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
+    <title>OLIFX | Post a product</title>
+    <link rel="stylesheet" href="../new/new.css">
+    <link rel="stylesheet" href="../home/style.css">
+    <link rel="stylesheet" href="post.css">
+
+    <!-- inclua o jQuery e o plugin de máscara -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body>
     <section class="form">
@@ -50,7 +62,7 @@ if (isset($_POST["button"])) {
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" required>
+            <input type="text" name="price" id="price" required>
 
             <label for="media">Image</label>
             <input type="file" name="media" id="media" required>
@@ -58,6 +70,13 @@ if (isset($_POST["button"])) {
             <input type="submit" value="Post it" name="button">
         </form>
     </section>
+
+    <!-- plugin mask -->
+    <script>
+        $('#price').mask('#.##0,00', {reverse: true});
+    </script>
+
+    
     <div class="bottom-navigation">
         <a href="../home">
             <div class="anchor">
@@ -65,7 +84,7 @@ if (isset($_POST["button"])) {
             </div>
         </a>
 
-        <a href="#">
+        <a href="../favorites">
             <div class="anchor">
                 <img src="../../assets/icons/star-o.png" alt="Favorites" class="favorite">
             </div>
