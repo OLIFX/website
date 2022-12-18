@@ -45,13 +45,6 @@ $content = json_decode($file_content, true);
 </head>
 <body>
     <div class="edit-account-container">
-        <!-- <div class="languages-area">
-            <img style="border: none;" src="../../assets/images/world-icon.png" alt="world-icon">
-            <div class="language-dropdown">
-                <a href="./index.php?language=pt-br">pt-br</a>
-                <a href="./index.php?language=en-us">en-us</a>
-            </div>
-        </div> -->
         <section class="edit-account-form">
             <form action="index.php" method="post" enctype="multipart/form-data">
                 <h1 class="edit-account-form-title"><?php echo $content['editAccount']['title'] ?></h1>

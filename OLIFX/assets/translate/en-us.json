@@ -1,14 +1,5 @@
 {
     "language": "en-us",
-    "index": {
-      "title": "Welcome to OLIFX",
-      "subtitle": "Platform to advertise and sell products among the IFRS Campus Feliz community.",
-      "button": "Enter the app"
-    },
-    "login": {
-        "password": "Password",
-        "dontHaveAccount": "Don't have an account yet? Sign Up"
-    },
     "dontHaveAccountPage": {
         "title": "Create Account",
         "fullName": "Full name",

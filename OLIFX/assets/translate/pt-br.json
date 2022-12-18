@@ -1,14 +1,5 @@
 {
     "language": "pt-br",
-    "index": {
-      "title": "Bem-vindo à OLIFX",
-      "subtitle": "Plataforma de divulgação e venda de produtos junto à comunidade IFRS Campus Feliz.",
-      "button": "Entre na plataforma"
-    },
-    "login": {
-        "password": "Senha",
-        "dontHaveAccount": "Ainda não possui uma conta? Crie aqui"
-    },
     "dontHaveAccountPage": {
         "title": "Criar conta",
         "fullName": "Nome completo",

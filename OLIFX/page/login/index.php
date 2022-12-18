@@ -13,11 +13,6 @@ if (isset($_POST["button"])) {
     }
 }
 
-$lang = $_SESSION['language'];
-
-$file_content = file_get_contents("../../assets/translate/{$lang}.json");
-$content = json_decode($file_content, true);
-
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +33,10 @@ $content = json_decode($file_content, true);
             <label for="email">E-Mail</label>
             <input type="email" name="email" id="email" required>
 
-            <label for="password"><?php echo $content['login']['password'] ?></label>
+            <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
 
-            <a class="link-centered-orange" href="../new"><?php echo $content['login']['dontHaveAccount'] ?></a>
+            <a class="link-centered-orange" href="../new">Don't have an account yet? Sign Up</a>
             <input type="submit" value="Login" name="button">
         </form>
     </section>

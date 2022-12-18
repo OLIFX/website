@@ -44,7 +44,7 @@ $content = json_decode($file_content, true);
                 <div class="dropdowns-area">
                     
                     <div class="languages-area">
-                        <img style="border: none;" src="../../assets/images/world-icon.png" alt="world-icon">
+                        <img style="border: none; height: 30px; width: 30px;" src="../../assets/images/world_icon.svg" alt="world-icon">
                         <div class="language-dropdown">
                             <a href="./index.php?language=pt-br">pt-br</a>
                             <a href="./index.php?language=en-us">en-us</a>

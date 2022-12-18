@@ -22,11 +22,6 @@ if (isset($_POST["button"])) {
     header("location: ../login/");
 }
 
-$lang = $_SESSION['language'];
-
-$file_content = file_get_contents("../../assets/translate/{$lang}.json");
-$content = json_decode($file_content, true);
-
 ?>
 
 <!DOCTYPE html>
@@ -36,33 +31,33 @@ $content = json_decode($file_content, true);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
-  <title>OLIFX | <?php echo $content['dontHaveAccountPage']['title'] ?></title>
+  <title>OLIFX | Create Account</title>
   <link rel="stylesheet" href="new.css">
 </head>
 <body>
     <section class="form">
         <form action="index.php" method="post" enctype="multipart/form-data">
-            <h1 class="title-in-box"><?php echo $content['dontHaveAccountPage']['title'] ?></h1>
+            <h1 class="title-in-box">Create Account</h1>
 
-            <label for="fullname"><?php echo $content['dontHaveAccountPage']['fullName'] ?></label>
+            <label for="fullname">Full name</label>
             <input type="text" name="fullname" id="fullname" required>
 
             <label for="email">E-Mail</label>
             <input type="email" name="email" id="email" required>
 
-            <label for="cellphone"><?php echo $content['dontHaveAccountPage']['telephone'] ?></label>
+            <label for="cellphone">Phone number</label>
             <input type="tel" name="cellphone" id="cellphone" value="" maxlength="15" minlength="15" required onChange="contactSeparators()">
 
-            <label for="password"><?php echo $content['dontHaveAccountPage']['password'] ?></label>
+            <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
 
-            <label for="city"><?php echo $content['dontHaveAccountPage']['city'] ?></label>
+            <label for="city">City</label>
             <input type="text" name="city" id="city" required>
 
-            <label for="profilepic"><?php echo $content['dontHaveAccountPage']['profilePic'] ?></label>
+            <label for="profilepic">Profile picture</label>
             <input type="file" name="profilepic" id="profilepic">
 
-            <input type="submit" value="<?php echo $content['dontHaveAccountPage']['create'] ?>" name="button">
+            <input type="submit" value="Create" name="button">
         </form>
     </section>
     <script>
