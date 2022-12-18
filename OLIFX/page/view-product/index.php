@@ -110,10 +110,11 @@ $content = json_decode($file_content, true);
                 <?php
                 
                 $link = Product::whatsApp($product->getIdUser());
-                echo "<a href='{$link}' class='contact-button'>$content['productPage']['contact']</a>";
-                
-                
                 ?>
+                <a href='<?php echo $link?>' class='contact-button'><?php echo $content['productPage']['contact']?></a>
+                
+                
+                
                 
                 
                 
