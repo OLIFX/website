@@ -107,9 +107,16 @@ $content = json_decode($file_content, true);
                     echo "<input type='submit' name='favorite' value='{$fav}' class='favorite-button $classFav'>";
                 ?>
                 </form>
+                <?php
                 
-                <!-- Link para a API do WhatsApp com o número -->
-                <a href="#" class="contact-button"><?php echo $content['productPage']['contact'] ?></a>
+                $link = Product::whatsApp($product->getIdUser());
+                echo "<a href='{$link}' class='contact-button'>$content['productPage']['contact']</a>";
+                
+                
+                ?>
+                
+                
+                
             </div>
         </div>
 

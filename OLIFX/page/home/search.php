@@ -18,6 +18,11 @@ if (!isset($_GET['search'])) {
 $search = '%'.trim($_GET['search']).'%';
 $products = Product::findByTitle($search);
 
+$lang = $_SESSION['language'];
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +38,10 @@ $products = Product::findByTitle($search);
     <div class="container">
         <div class="superior-part">
             <div class="superior-elements" style="justify-content: flex-end;">
+
+                <form action="./search.php" method="GET">
+                    <input name="search" type="text" class="search" placeholder="<?php echo $content['homepage&Favorites']['search'] ?>">    
+                </form>
                 
                 <div class="user-area">
                     <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">

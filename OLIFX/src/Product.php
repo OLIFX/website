@@ -166,5 +166,15 @@ class Product implements  ActiveRecord
         $res = $connection->query($sql);
         return $res[0]["count"];
     }
+
+    public static function whatsApp($id) : string {
+        $connection = new MySQL();
+        $sql = "SELECT cellphone FROM user,product WHERE user.idUser = {$id}";
+        $res = $connection->query($sql);
+        $number = $res[0]['cellphone'];
+        $formatednumber = preg_replace("/[^0-9]/", "",$number);
+        $link = "https://wa.me/55".$formatednumber;
+        return $link;
+    }
 }
 
