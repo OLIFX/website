@@ -18,18 +18,26 @@
         "profilePic": "Profile picture",
         "crate": "Create"
     },
-    "homepage&Favourites": {
+    "homepage&Favorites": {
+        "favorites": "Favorites",
+        "homepage": "Homepage",
         "search": "Search something...",
         "welcome": "Welcome,",
         "card": {
             "postedBy": "Posted by",
             "midPart": "at"
         },
+        "noProductsCard": {
+            "title": "This is an example of a title... Some stuff here",
+            "description": "This is an example description. Add here the information you want to provide for the product"
+        },
         "dropdown": {
             "editAccount": "Edit your account",
             "yourProducts": "Your products",
             "logout": "Log out"
-        }
+        },
+        "favoritedAt": "Favorited at",
+        "noFavorited": "No items favorited yet..."
     },
     "editAccount": {
         "title": "Edit your account",
@@ -48,10 +56,12 @@
         "postIt": "Post it"
     },
     "productPage": {
+        "viewProduct": "View Product",
         "price": "Price",
         "data": "Posted data",
         "description": "Description",
-        "favourite": "Favourite this",
+        "favorite": "Favorite this",
+        "unfavorite": "Unfavorite this",
         "contact": "Contact via WhatsApp"
     }
   }

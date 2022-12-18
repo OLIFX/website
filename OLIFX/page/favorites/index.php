@@ -8,6 +8,12 @@ if (!$_SESSION["idUser"]) {
 $favorites = Favorite::findallByUser($_SESSION["idUser"]);
 
 $directory = "../../database/users/";
+
+$lang = $_SESSION['language'];
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +24,14 @@ $directory = "../../database/users/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
-    <title>OLIFX | Home</title>
+    <title>OLIFX | <?php echo $content['homepage&Favorites']['favorites'] ?></title>
 </head>
 <body>
 <div class="container">
     <div class="superior-part">
         <div class="superior-elements">
             <form action="">
-                <input name="s" type="text" class="search" placeholder="Search something...">
+                <input name="s" type="text" class="search" placeholder="<?php echo $content['homepage&Favorites']['search'] ?>">
             </form>
 
             <div class="user-area">
@@ -33,12 +39,12 @@ $directory = "../../database/users/";
             </div>
 
             <div class="dropdown">
-                <a href="../edit-account/">Edit your account</a>
-                <a href="../edit-account/">Your products</a>
-                <a href="../login/logout.php">Log out</a>
+                <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
+                <a href="../edit-account/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+                <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
             </div>
 
-            <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
+            <span class="home-welcome"><?php echo $content['homepage&Favorites']['welcome'] ?> <?php echo $_SESSION["fullName"]?>!</span>
         </div>
     </div>
 
@@ -64,11 +70,11 @@ $directory = "../../database/users/";
                     $publisher = User::findUserFullNameByIdUser($product->getIdUser());
                     $datetime = date_create($product->getDate_time());
                     $dateFormatted = date_format($datetime, "m/d/Y");
-                    echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
+                    echo "<p class=\"card-published\"><em>{$content['homepage&Favorites']['card']['postedBy']}</em> <strong>{$publisher}</strong> <em>{$content['homepage&Favorites']['card']['midPart']}</em> {$dateFormatted}</p>";
                     
                     $datetime = date_create($favorite->getDate_time());
                     $dateFavorited = date_format($datetime, "m/d/Y");
-                    echo "<p class=\"card-published\"><em>Favorited at</em> <strong>{$dateFavorited}</strong></p>";
+                    echo "<p class=\"card-published\"><em>{$content['homepage&Favorites']['favoritedAt']}</em> <strong>{$dateFavorited}</strong></p>";
 
                     $value = number_format($product->getPrice(), 2, ",", ".");
                     echo "<p class='card-price'>R$ {$value}</p>";
@@ -76,7 +82,7 @@ $directory = "../../database/users/";
                     echo "</div>";
                 }
             } else {
-                echo "<div class='card'><p class='card-title'>No items favorited...</p></div>";
+                echo "<div class='card'><p class='card-title'>{$content['homepage&Favorites']['noFavorited']}</p></div>";
             }
         ?>
     </div>

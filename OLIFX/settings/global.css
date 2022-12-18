@@ -4,3 +4,28 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.language-dropdown { 
+    display: none;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 21px;
+    border-radius: 12px;
+    position: absolute;
+    top: 90px;
+    right: 240px;
+    background-color: #fff;
+    z-index: 4;
+    transition: all 0.4s ease-out;
+}
+.language-dropdown a {
+    color: #363636;
+    opacity: 0.75;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+}
+.language-dropdown a:hover {
+    opacity: 1;
+    color: #000;
+    text-decoration: underline;
+}
