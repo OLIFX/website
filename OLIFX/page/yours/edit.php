@@ -49,6 +49,7 @@ $directory = "../../database/users/";
     <link rel="stylesheet" href="../new/new.css">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="../post/post.css">
+    <link rel="stylesheet" href="../home/nav.css">
 
     <!-- inclua o jQuery e o plugin de máscara -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -115,6 +116,8 @@ $directory = "../../database/users/";
         </div>
     </a>
 </div>
+
+<?php include "../home/nav.php" ?>
 
 <script src="../home/main.js"></script>
 </body>

@@ -40,6 +40,8 @@ $directory = "../../database/users/";
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../home/nav.css">
+    
     <title>View Product | <?php echo $product->getTitle() ?> </title>
 </head>
 <body>
@@ -128,6 +130,8 @@ $directory = "../../database/users/";
                 </div>
             </a>
         </div>
+
+        <?php include "../home/nav.php" ?>
         
     </div>
 

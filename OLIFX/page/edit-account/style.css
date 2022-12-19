@@ -81,7 +81,7 @@ input[type=submit] {
     background-color: #ff9600;
     color: #fff;
     border-radius: 12px;
-    box-shadow: 0px 4px 12px #ff95008a;
+    box-shadow: 0 4px 12px #ff95008a;
     transition: all ease .2s;
 }
 input[type=submit]:hover {
