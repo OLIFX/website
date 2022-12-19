@@ -28,7 +28,15 @@ if (isset($_SESSION['idUser'])) {
     header("location: ../login");
 }
 
+
 $directory = "../../database/users/";
+
+$lang = $_SESSION['language'];
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +45,12 @@ $directory = "../../database/users/";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
-    <link rel="stylesheet" href="../home/style.css">
+
+    <link rel="stylesheet" href="../home/style.css">    
+
     <link rel="stylesheet" href="style.css">
-    
-    
-    <title>Edit your account</title>
+    <title><?php echo $content['editAccount']['title'] ?></title>
+
 </head>
 <body>
     <div class="edit-account-container">
@@ -57,15 +66,15 @@ $directory = "../../database/users/";
         
         <section class="edit-account-form">
             <form action="index.php" method="post" enctype="multipart/form-data">
-                <h1 class="edit-account-form-title">Edit your account</h1>
+                <h1 class="edit-account-form-title"><?php echo $content['editAccount']['title'] ?></h1>
 
-                <label for="name">Full name</label>
+                <label for="name"><?php echo $content['editAccount']['fullName'] ?></label>
                 <input type="text" name="name" id="name" value="<?php echo $user->getFullName()?>" required>
 
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" value="<?php echo $user->getEmail()?>" required>
 
-                <label for="cellphone">Phone number</label>
+                <label for="cellphone"><?php echo $content['editAccount']['telephone'] ?></label>
                 <input type="tel" name="cellphone" id="cellphone" value="<?php echo $user->getCellphone()?>" maxlength="15" minlength="15" required onChange="contactSeparators()">
                 <script>
                     function mascara(o,f){
@@ -92,13 +101,13 @@ $directory = "../../database/users/";
                     }
                 </script>
 
-                <label for="city">City</label>
+                <label for="city"><?php echo $content['editAccount']['city'] ?></label>
                 <input type="text" name="city" id="city" value="<?php echo $user->getCity()?>" required>
 
-                <label for="profilepic">Profile picture</label>
+                <label for="profilepic"><?php echo $content['editAccount']['profilePic'] ?></label>
                 <input type="file" name="profilepic" id="profilepic">
 
-                <input type="submit" value="Edit" name="button">
+                <input type="submit" value="<?php echo $content['editAccount']['edit'] ?>" name="button">
             </form>
         </section>
 

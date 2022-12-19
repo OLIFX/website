@@ -1,0 +1,58 @@
+{
+    "language": "en-us",
+    "dontHaveAccountPage": {
+        "title": "Create Account",
+        "fullName": "Full name",
+        "telephone": "Phone number",
+        "password": "Password",
+        "city": "City",
+        "profilePic": "Profile picture",
+        "crate": "Create"
+    },
+    "homepage&Favorites": {
+        "favorites": "Favorites",
+        "homepage": "Homepage",
+        "search": "Search something...",
+        "welcome": "Welcome,",
+        "card": {
+            "postedBy": "Posted by",
+            "midPart": "at"
+        },
+        "noProductsCard": {
+            "title": "This is an example of a title... Some stuff here",
+            "description": "This is an example description. Add here the information you want to provide for the product"
+        },
+        "dropdown": {
+            "editAccount": "Edit your account",
+            "yourProducts": "Your products",
+            "logout": "Log out"
+        },
+        "favoritedAt": "Favorited at",
+        "noFavorited": "No items favorited yet..."
+    },
+    "editAccount": {
+        "title": "Edit your account",
+        "fullName": "Full name",
+        "telephone": "Phone number",
+        "city": "City",
+        "profilePic": "Profile picture",
+        "edit": "Edit"
+    },
+    "createProduct": {
+        "postAProduct": "Post a product",
+        "title": "Title",
+        "description": "Description",
+        "price": "Price",
+        "image": "Image",
+        "postIt": "Post it"
+    },
+    "productPage": {
+        "viewProduct": "View Product",
+        "price": "Price",
+        "data": "Posted data",
+        "description": "Description",
+        "favorite": "Favorite this",
+        "unfavorite": "Unfavorite this",
+        "contact": "Contact via WhatsApp"
+    }
+  }

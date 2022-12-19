@@ -33,6 +33,13 @@ if (isset($_POST["button"])) {
 }
 
 $directory = "../../database/users/";
+
+$lang = $_SESSION['language'];
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +49,7 @@ $directory = "../../database/users/";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
-    <title>OLIFX | Post a product</title>
+    <title>OLIFX | <?php echo $content['createProduct']['postAProduct'] ?></title>
     <link rel="stylesheet" href="../new/new.css">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="post.css">
@@ -65,21 +72,21 @@ $directory = "../../database/users/";
     
     <section class="form">
         <form action="index.php" method="post" enctype="multipart/form-data">
-            <h1 class="title-in-box">Post a product</h1>
+            <h1 class="title-in-box"><?php echo $content['createProduct']['postAProduct'] ?></h1>
 
-            <label for="title">Title</label>
+            <label for="title"><?php echo $content['createProduct']['title'] ?></label>
             <input type="text" name="title" id="title" required>
 
-            <label for="description">Description</label>
+            <label for="description"><?php echo $content['createProduct']['description'] ?></label>
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
-            <label for="price">Price</label>
+            <label for="price"><?php echo $content['createProduct']['price'] ?></label>
             <input type="text" name="price" id="price" required>
 
-            <label for="media">Image</label>
+            <label for="media"><?php echo $content['createProduct']['image'] ?></label>
             <input type="file" name="media" id="media" required>
 
-            <input type="submit" value="Post it" name="button">
+            <input type="submit" value="<?php echo $content['createProduct']['postIt'] ?>" name="button">
         </form>
     </section>
 

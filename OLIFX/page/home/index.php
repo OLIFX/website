@@ -18,6 +18,16 @@ if (isset($_GET["search"])) {
 }
 
 $directory = "../../database/users/";
+
+$lang = "en-us";
+if (isset($_GET["language"]) && $_GET["language"] == "pt-br") {
+  $lang = "pt-br";
+}
+$_SESSION['language'] = $lang;
+
+$file_content = file_get_contents("../../assets/translate/{$lang}.json");
+$content = json_decode($file_content, true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,27 +37,40 @@ $directory = "../../database/users/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <title>OLIFX | Home</title>
+    <title>OLIFX | <?php echo $content['homepage&Favorites']['homepage'] ?></title>
 </head>
 <body>
     <div class="container">
         <div class="superior-part">
             <div class="superior-elements">
-                <form action="../home" method="GET">
-                    <input name="search" type="text" class="search" placeholder="Search something...">    
+                <form action="./search.php" method="GET">
+                    <input name="search" type="text" class="search" placeholder="<?php echo $content['homepage&Favorites']['search'] ?>">    
                 </form>
-                
-                <div class="user-area">
-                    <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+
+                <div class="dropdowns-area">
+                    
+                    <div class="languages-area">
+                        <img style="border: none; height: 30px; width: 30px;" src="../../assets/images/world_icon.svg" alt="world-icon">
+                        <div class="language-dropdown">
+                            <a href="./index.php?language=pt-br">pt-br</a>
+                            <a href="./index.php?language=en-us">en-us</a>
+                        </div>
+                    </div>
+                    
+                    <div class="user-area">
+                        <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+                    </div>
+                    
+    
+                    <div class="dropdown">
+                        <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
+                        <a href="../yours/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+                        <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
+                    </div>
+                    
+    
+                    <span class="home-welcome"><?php echo $content['homepage&Favorites']['welcome'] ?> <?php echo $_SESSION["fullName"]?>!</span>
                 </div>
-                
-                <div class="dropdown" style="display: none;">
-                    <a href="../edit-account">Edit your account</a>
-                    <a href="../yours">Your products</a>
-                    <a href="../login/logout.php">Log out</a>
-                </div>
-                
-                <span class="home-welcome">Welcome, <?php echo $_SESSION["fullName"]?>!</span>
             </div>
         </div>
 
@@ -68,6 +91,9 @@ $directory = "../../database/users/";
                         echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
                         echo "<p class=\"card-description\">{$product->getDescription()}</p>";
 
+                    echo "<p class=\"card-title\">{$content['homepage&Favorites']['noProductsCard']['title']}</p>";
+                    echo "<p class=\"card-description\">{$content['homepage&Favorites']['noProductsCard']['description']}</p>";
+
                         $publisher = User::findUserFullNameByIdUser($product->getIdUser());
                         $datetime = date_create($product->getDate_time());
                         $dateFormatted = date_format($datetime, "m/d/Y");
@@ -85,6 +111,18 @@ $directory = "../../database/users/";
                     } else {
                         echo "<p class=\"card-title\">Nothing has been posted yet...</p>";
                     }
+
+                    echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
+                    echo "<p class=\"card-description\">{$product->getDescription()}</p>";
+                    
+                    $publisher = User::findUserFullNameByIdUser($product->getIdUser());
+                    $datetime = date_create($product->getDate_time());
+                    $dateFormatted = date_format($datetime, "m/d/Y");
+                    echo "<p class=\"card-published\"><em>{$content['homepage&Favorites']['card']['postedBy']}</em> <strong>{$publisher}</strong> <em>{$content['homepage&Favorites']['card']['midPart']}</em> {$dateFormatted}</p>";
+                    
+                    $value = number_format($product->getPrice(), 2, ",", ".");
+                    echo "<p class='card-price'>R$ {$value}</p>";
+
                     echo "</div>";
                 }
             ?>

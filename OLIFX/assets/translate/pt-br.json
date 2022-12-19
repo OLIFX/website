@@ -1,0 +1,58 @@
+{
+    "language": "pt-br",
+    "dontHaveAccountPage": {
+        "title": "Criar conta",
+        "fullName": "Nome completo",
+        "telephone": "Celular",
+        "password": "Senha",
+        "city": "Cidade",
+        "profilePic": "Foto de perfil",
+        "crate": "Criar"
+    },
+    "homepage&Favorites": {
+        "favorites": "Favoritos",
+        "homepage": "Página inicial",
+        "search": "Pesquise por um produto...",
+        "welcome": "Bem-vindo,",
+        "card": {
+            "postedBy": "Postado por",
+            "midPart": "dia"
+        },
+        "noProductsCard": {
+            "title": "Este é um exemplo de título... Algumas coisas aqui",
+            "description": "Este é um exemplo de descrição. Adicione aqui as informações que deseja fornecer para o produto"
+        },
+        "dropdown": {
+            "editAccount": "Edite sua conta",
+            "yourProducts": "Seus produtos",
+            "logout": "Sair"
+        },
+        "favoritedAt": "Favoritado dia",
+        "noFavorited": "Nenhum item favoritado ainda..."
+    },
+    "editAccount": {
+        "title": "Edite sua conta",
+        "fullName": "Nome completo",
+        "telephone": "Celular",
+        "city": "Cidade",
+        "profilePic": "Foto de perfil",
+        "edit": "Editar"
+    },
+    "createProduct": {
+        "postAProduct": "Anuncie um produto",
+        "title": "Título",
+        "description": "Descrição",
+        "price": "Preço",
+        "image": "Imagem",
+        "postIt": "Postar"
+    },
+    "productPage": {
+        "viewProduct": "Visualizar Produto",
+        "price": "Preço",
+        "data": "Postado dia",
+        "description": "Descrição",
+        "favorite": "Adicionar aos favoritos",
+        "unfavorite": "Desfavoritar o produto",
+        "contact": "Entrar em contato via WhatsApp"
+    }
+  }
