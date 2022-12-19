@@ -82,9 +82,11 @@ class Product implements  ActiveRecord
     public function delete(): bool
     {
         $connection = new MySQL();
+        $sql2 = "DELETE FROM favorite where idProduct = {$this->idProduct}";
         $sql = "DELETE FROM product WHERE idProduct = {$this->idProduct}";
-        
-        return $connection->execute($sql);
+        $teste2 = $connection->execute($sql2);
+        $teste =  $connection->execute($sql);
+        return true;
     }
 
     public static function find($idProduct): Product
