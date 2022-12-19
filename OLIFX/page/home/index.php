@@ -87,12 +87,13 @@ $content = json_decode($file_content, true);
 
                             echo "<div class=\"card\">";
                             echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                            echo "<p class=\"card-title\">{$content['homepage&Favorites']['noProductsCard']['title']}</p>";
+                            echo "<p class=\"card-description\">{$content['homepage&Favorites']['noProductsCard']['description']}</p>";
                         }
                         echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
                         echo "<p class=\"card-description\">{$product->getDescription()}</p>";
 
-                    echo "<p class=\"card-title\">{$content['homepage&Favorites']['noProductsCard']['title']}</p>";
-                    echo "<p class=\"card-description\">{$content['homepage&Favorites']['noProductsCard']['description']}</p>";
+                    
 
                         $publisher = User::findUserFullNameByIdUser($product->getIdUser());
                         $datetime = date_create($product->getDate_time());
