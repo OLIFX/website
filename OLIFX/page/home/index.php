@@ -81,8 +81,7 @@ $directory = "../../database/users/";
                 } else {
                     echo "<div class=\"card\">";
                     if ($_GET["search"]) {
-                        $param = trim($_GET["search"]);
-                        echo "<p class=\"card-title\">Nothing found with the name <em>{$param}</em></p>";
+                        echo "<p class=\"card-title\">Nothing found</p>";
                     } else {
                         echo "<p class=\"card-title\">Nothing has been posted yet...</p>";
                     }
