@@ -68,10 +68,12 @@ class Product implements  ActiveRecord
             $sql = "UPDATE product SET title = '{$this->title}' ,description = '{$this->description}', price = '{$this->price}' WHERE idProduct = {$this->idProduct}";
         } else {
             $connection = new MySQL();
-            $sqli = "SELECT COUNT(*) as numero FROM product";
+            $sqli = "SELECT COUNT(*) + 1 as numero FROM product";
             $result = $connection->query($sqli);
             $c = $result[0]['numero'];
-            $sql = "INSERT INTO product (title,description,idUser,price,date_time,idProduct) VALUES ('{$this->title}','{$this->description}',{$this->idUser},'{$this->price}', NOW(),$c)";
+            $sql = "INSERT INTO `product`".
+                "(`idProduct`, `idUser`, `title`, `description`, `price`, `date_time`) ".
+                "VALUES ($c, {$this->idUser}, '{$this->title}', '{$this->description}', {$this->price}, now())";
         }
         
         return $connection->execute($sql);
@@ -80,9 +82,11 @@ class Product implements  ActiveRecord
     public function delete(): bool
     {
         $connection = new MySQL();
+        $sql2 = "DELETE FROM favorite where idProduct = {$this->idProduct}";
         $sql = "DELETE FROM product WHERE idProduct = {$this->idProduct}";
-        
-        return $connection->execute($sql);
+        $teste2 = $connection->execute($sql2);
+        $teste =  $connection->execute($sql);
+        return true;
     }
 
     public static function find($idProduct): Product

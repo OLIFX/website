@@ -46,6 +46,7 @@ $content = json_decode($file_content, true);
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="style.css">
+
     <title><?php echo $content['productPage']['viewProduct'] ?> | <?php echo $product->getTitle() ?> </title>
 </head>
 <body>
@@ -54,9 +55,10 @@ $content = json_decode($file_content, true);
             <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
         </div>
 
-        <div class="dropdown">
+
+        <div class="dropdown" style="display: none">
         <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
-        <a href="../edit-account/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+        <a href="../yours/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
         <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
         </div>
         
@@ -107,6 +109,7 @@ $content = json_decode($file_content, true);
                     echo "<input type='submit' name='favorite' value='{$fav}' class='favorite-button $classFav'>";
                 ?>
                 </form>
+
                 <?php
                 
                 $link = Product::whatsApp($product->getIdUser());
@@ -142,6 +145,8 @@ $content = json_decode($file_content, true);
                 </div>
             </a>
         </div>
+
+        
         
     </div>
 

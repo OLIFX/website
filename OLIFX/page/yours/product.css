@@ -1,0 +1,45 @@
+.red-btn {
+    background-color: #a23f3f;
+    box-shadow: 0px 4px 12px #a23f3f8a;
+}
+
+.confirm-delete {
+    position: absolute;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: #fff;
+    z-index: 3;
+    padding: 40px;
+    box-shadow: 0 0 200px 120px #ff96006a;
+    border-radius: 12px;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delete-buttons a {
+    user-select: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #141923;
+    color: #dddddd;
+    margin-top: 5px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.delete-buttons a#no-delete {
+    background-color: #a23f3f;
+}
+.delete-buttons a:hover {
+    opacity: 0.7;
+    scale: 1.1;
+    cursor: pointer;
+}

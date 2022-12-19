@@ -24,6 +24,7 @@ $content = json_decode($file_content, true);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
+
     <title>OLIFX | <?php echo $content['homepage&Favorites']['favorites'] ?></title>
 </head>
 <body>
@@ -40,7 +41,7 @@ $content = json_decode($file_content, true);
 
             <div class="dropdown">
                 <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
-                <a href="../edit-account/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+                <a href="../yours/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
                 <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
             </div>
 
@@ -107,8 +108,10 @@ $content = json_decode($file_content, true);
             </div>
         </a>
     </div>
+    
+    
 </div>
 
-<script src="main.js"></script>
+<script src="../home/main.js"></script>
 </body>
 </html>

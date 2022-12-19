@@ -9,7 +9,13 @@ if (!isset($_SESSION["idUser"])) {
 }
 
 User::refreshSession();
-$products = Product::findall();
+
+if (isset($_GET["search"])) {
+    $search = '%'.trim($_GET['search']).'%';
+    $products = Product::findByTitle($search);
+} else {
+    $products = Product::findall();
+}
 
 $directory = "../../database/users/";
 
@@ -58,7 +64,7 @@ $content = json_decode($file_content, true);
     
                     <div class="dropdown">
                         <a href="../edit-account/"> <?php echo $content['homepage&Favorites']['dropdown']['editAccount'] ?></a>
-                        <a href="../edit-account/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
+                        <a href="../yours/"><?php echo $content['homepage&Favorites']['dropdown']['yourProducts'] ?></a>
                         <a href="../login/logout.php"><?php echo $content['homepage&Favorites']['dropdown']['logout'] ?></a>
                     </div>
                     
@@ -70,30 +76,42 @@ $content = json_decode($file_content, true);
 
         <div class="middle-part">
             <?php
-                if (count($products) <= 0) {
-                    echo "<div class=\"card\">";
-                    echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                if (count($products) > 0) {
+                    foreach($products as $product) {
+                        $id = $product->getIdProduct();
+                        if(Media::existeMediaProduto($id)){
+                            $img = Media::findMediaByProduct($id);
+                            echo "<div class=\"card\">";
+                            echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
+                        }else{
+
+                            echo "<div class=\"card\">";
+                            echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                        }
+                        echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
+                        echo "<p class=\"card-description\">{$product->getDescription()}</p>";
 
                     echo "<p class=\"card-title\">{$content['homepage&Favorites']['noProductsCard']['title']}</p>";
                     echo "<p class=\"card-description\">{$content['homepage&Favorites']['noProductsCard']['description']}</p>";
 
-                    echo "<p class='card-price'>R$ 00,00</p>";
+                        $publisher = User::findUserFullNameByIdUser($product->getIdUser());
+                        $datetime = date_create($product->getDate_time());
+                        $dateFormatted = date_format($datetime, "m/d/Y");
+                        echo "<p class=\"card-published\"><em>Posted by</em> <strong>{$publisher}</strong> <em>at</em> {$dateFormatted}</p>";
 
-                    echo "</div>";
-                }
+                        $value = number_format($product->getPrice(), 2, ",", ".");
+                        echo "<p class='card-price'>R$ {$value}</p>";
 
-                foreach($products as $product) {
-                    
-                    $id = $product->getIdProduct();
-                    if(Media::existeMediaProduto($id)){
-                        $img = Media::findMediaByProduct($id);
-                        echo "<div class=\"card\">";
-                        echo "<img src=\"../../database/media/{$img->getPath()}\" alt=\"Default icon\">";
-                    }else{
-                        
-                        echo "<div class=\"card\">";
-                        echo "<img src=\"../../assets/images/item.png\" alt=\"Default icon\">";
+                        echo "</div>";
                     }
+                } else {
+                    echo "<div class=\"card\">";
+                    if ($_GET["search"]) {
+                        echo "<p class=\"card-title\">Nothing found</p>";
+                    } else {
+                        echo "<p class=\"card-title\">Nothing has been posted yet...</p>";
+                    }
+
                     echo "<a href=\"../view-product/?id={$product->getIdProduct()}\"><p class=\"card-title\">{$product->getTitle()}</p></a>";
                     echo "<p class=\"card-description\">{$product->getDescription()}</p>";
                     
@@ -130,6 +148,8 @@ $content = json_decode($file_content, true);
                 </div>
             </a>
         </div>
+        
+        
     </div>
 
     <script src="main.js"></script>

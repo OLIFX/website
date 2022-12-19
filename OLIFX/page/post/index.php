@@ -9,7 +9,7 @@ if (!isset($_SESSION["idUser"])) {
 
 if (isset($_POST["button"])) {
     $connection = new MySQL();
-    $sql = "SELECT COUNT(*) as numero FROM product";
+    $sql = "SELECT COUNT(*) + 1 as numero FROM product";
     $result = $connection->query($sql);
     $c = $result[0]['numero'];
     
@@ -32,10 +32,13 @@ if (isset($_POST["button"])) {
     header("location: ../home");
 }
 
+$directory = "../../database/users/";
+
 $lang = $_SESSION['language'];
 
 $file_content = file_get_contents("../../assets/translate/{$lang}.json");
 $content = json_decode($file_content, true);
+
 
 ?>
 
@@ -50,12 +53,23 @@ $content = json_decode($file_content, true);
     <link rel="stylesheet" href="../new/new.css">
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="post.css">
+    
 
     <!-- inclua o jQuery e o plugin de máscara -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body>
+    <div class="user-area">
+        <img src="<?php echo $directory.$_SESSION["profilePic"]; ?>" alt="Default icon">
+    </div>
+    
+    <div class="dropdown" style="display: none">
+        <a href="../edit-account">Edit your account</a>
+        <a href="../yours">Your products</a>
+        <a href="../login/logout.php">Log out</a>
+    </div>
+    
     <section class="form">
         <form action="index.php" method="post" enctype="multipart/form-data">
             <h1 class="title-in-box"><?php echo $content['createProduct']['postAProduct'] ?></h1>
@@ -101,5 +115,9 @@ $content = json_decode($file_content, true);
             </div>
         </a>
     </div>
+
+    
+    
+    <script src="../home/main.js"></script>
 </body>
 </html>

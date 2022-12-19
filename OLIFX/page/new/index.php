@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 if (isset($_POST["button"])) {
     // If the user didn't choose a profile picture, set the default one.
-    if ($_FILES["profilepic"]["name"] == "") $_FILES["profilepic"]["name"] = "default.jpg";
+    if ($_FILES["profilepic"]["name"] == "") $_FILES["profilepic"]["name"] = "default.png";
     
     $user = new User();
     $user->constructorCreate(
