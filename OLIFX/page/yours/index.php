@@ -23,7 +23,6 @@ $directory = "../../database/users/";
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="../home/style.css">
 
-    <link rel="stylesheet" href="../home/nav.css">
     <title>OLIFX | Your products</title>
 </head>
 <body>
@@ -104,7 +103,7 @@ $directory = "../../database/users/";
         </a>
     </div>
 
-    <?php include "../home/nav.php" ?>
+    
 </div>
 
 <script async src="../home/main.js"></script>

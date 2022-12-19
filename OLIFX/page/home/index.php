@@ -27,7 +27,6 @@ $directory = "../../database/users/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/olifx_logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nav.css">
     <title>OLIFX | Home</title>
 </head>
 <body>
@@ -113,7 +112,7 @@ $directory = "../../database/users/";
             </a>
         </div>
         
-        <?php include "nav.php" ?>
+        
     </div>
 
     <script src="main.js"></script>

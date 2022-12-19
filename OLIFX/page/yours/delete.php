@@ -17,8 +17,7 @@ try {
     $product->delete();
     $media->delete();
 } catch (Exception $exception) {
-    echo "exception: $exception";
-    die();
+    header("location: ../login");
 }
 
 header("location: ../yours");

@@ -40,7 +40,7 @@ $directory = "../../database/users/";
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="style.css">
     
-    <link rel="stylesheet" href="../home/nav.css">
+    
     <title>Edit your account</title>
 </head>
 <body>
@@ -123,7 +123,7 @@ $directory = "../../database/users/";
             </a>
         </div>
 
-        <?php include "../home/nav.php" ?>
+        
     </div>
 
     <script src="../home/main.js"></script>

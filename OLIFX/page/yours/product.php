@@ -28,7 +28,6 @@ $directory = "../../database/users/";
     <link rel="stylesheet" href="../home/style.css">
     <link rel="stylesheet" href="../view-product/style.css">
     <link rel="stylesheet" href="../yours/product.css">
-    <link rel="stylesheet" href="../home/nav.css">
     <title>See your product | <?php echo $product->getTitle() ?> </title>
 </head>
 <body>
@@ -114,7 +113,7 @@ $directory = "../../database/users/";
         </a>
     </div>
 
-    <?php include "../home/nav.php" ?>
+    
 
 </div>
 
